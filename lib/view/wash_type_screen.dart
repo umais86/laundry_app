@@ -106,7 +106,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   Spacer(),
                   FragranceCard(
                     title: "Women’s Fragrance",
-                    options: ['Elixir', 'Imperial'],
+                    options: ['Orchid', 'Moony'],
                     iconAssetPath: 'assets/icons/perfume.png',
                   ),
                 ],

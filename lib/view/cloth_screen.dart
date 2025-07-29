@@ -62,7 +62,6 @@ class _ClothScreenState extends State<ClothScreen> {
               CustomElevatedButton2(
                 label: 'Men’s',
                 isSelected: isMenSelected,
-
                 onPressed: () => setState(() => isMenSelected = true),
               ),
               SizedBox(width: 40),

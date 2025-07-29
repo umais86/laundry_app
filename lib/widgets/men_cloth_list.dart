@@ -32,7 +32,6 @@ class MenClothList extends StatelessWidget {
             },
           ),
         ),
-
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
@@ -90,7 +89,7 @@ class MenClothList extends StatelessWidget {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          const Counter1(),
+          Counter1(clothLabel: label),
         ],
       ),
     );

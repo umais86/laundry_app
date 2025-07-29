@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:par_1/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class SteamCard extends StatefulWidget {
   final String title;
   final String title2;
-  final Function(bool)? onToggle;
 
-  const SteamCard({
-    super.key,
-    required this.title,
-    required this.title2,
-    this.onToggle,
-  });
+  const SteamCard({super.key, required this.title, required this.title2});
 
   @override
   State<SteamCard> createState() => _SteamCardState();
 }
 
 class _SteamCardState extends State<SteamCard> {
-  late bool isOn;
-
-  @override
-  void initState() {
-    super.initState();
-    isOn = true;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+    bool isOn = cartProvider.isSteamSelected;
+
     return Container(
       width: double.infinity,
       height: 80,
@@ -37,7 +28,7 @@ class _SteamCardState extends State<SteamCard> {
         boxShadow: [
           BoxShadow(
             offset: const Offset(4, 2),
-            color: Colors.black.withValues(alpha: 0.27),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 6,
           ),
         ],
@@ -61,10 +52,7 @@ class _SteamCardState extends State<SteamCard> {
                 child: Switch(
                   value: isOn,
                   onChanged: (value) {
-                    setState(() {
-                      isOn = value;
-                      widget.onToggle?.call(value);
-                    });
+                    cartProvider.toggleSteam(value);
                   },
                   activeColor: Colors.white,
                   activeTrackColor: Colors.green,
