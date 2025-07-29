@@ -59,16 +59,6 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6),
-          child: CircleAvatar(
-            backgroundColor: color3,
-            child: IconButton(
-              onPressed: () {},
-              icon: Image.asset('assets/icons/notify.png'),
-            ),
-          ),
-        ),
-        Padding(
           padding: const EdgeInsets.only(right: 8),
           child: CircleAvatar(
             backgroundColor: color4,

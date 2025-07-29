@@ -89,7 +89,7 @@ class MenClothList extends StatelessWidget {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          Counter1(clothLabel: label),
+          Counter1(clothLabel: label, iconPath: ''),
         ],
       ),
     );
