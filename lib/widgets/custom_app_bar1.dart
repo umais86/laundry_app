@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/components/dropdown_menu.dart';
+import 'package:par_1/view/how_it_work.dart';
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
   final Color color;
@@ -65,7 +66,39 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
             backgroundColor: color4,
             child: IconButton(
               onPressed: () {
-                CustomDropdown();
+                final RenderBox button =
+                    context.findRenderObject() as RenderBox;
+                final RenderBox overlay =
+                    Overlay.of(context).context.findRenderObject() as RenderBox;
+
+                final Offset offset = button.localToGlobal(
+                  Offset.zero,
+                  ancestor: overlay,
+                );
+                final Size size = button.size;
+
+                showMenu<String>(
+                  context: context,
+                  position: RelativeRect.fromLTRB(
+                    offset.dx + size.width - 50,
+                    offset.dy + size.height - 60,
+                    offset.dx + size.width,
+                    0,
+                  ),
+                  items: const [
+                    PopupMenuItem<String>(
+                      value: 'How It Works ?',
+                      child: Text('How It Works ?'),
+                    ),
+                  ],
+                ).then((selectedValue) {
+                  if (selectedValue == 'How It Works ?') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const HowItWork()),
+                    );
+                  }
+                });
               },
               icon: Image.asset('assets/icons/tab.png'),
             ),

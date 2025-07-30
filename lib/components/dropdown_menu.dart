@@ -11,7 +11,7 @@ class CustomDropdown extends StatefulWidget {
 class _CustomDropdownState extends State<CustomDropdown> {
   String? selectedValue;
 
-  final Map<String, Widget> optionToScreen = {'How It Works ?': HowItWork()};
+  final Map<String, Widget> optionToScreen = {'How It Works': HowItWork()};
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,6 @@ class _CustomDropdownState extends State<CustomDropdown> {
           setState(() {
             selectedValue = newValue;
           });
-
-          // Navigate to selected screen
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => optionToScreen[newValue]!),
