@@ -94,48 +94,6 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
             ),
 
             const SizedBox(height: 24),
-
-            // Optional Perfume Dropdown
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            //   child: Text(
-            //     'Optional Perfume',
-            //     style: TextStyle(fontWeight: FontWeight.w600),
-            //   ),
-            // ),
-
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            //   child: DropdownButtonFormField<String>(
-            //     decoration: const InputDecoration(
-            //       hintText: 'Select perfume (optional)',
-            //       contentPadding: EdgeInsets.symmetric(horizontal: 12),
-            //     ),
-            //     value: _selectedPerfume,
-            //     items: perfumes.map((String perfume) {
-            //       return DropdownMenuItem<String>(
-            //         value: perfume,
-            //         child: Text(perfume),
-            //       );
-            //     }).toList(),
-            //     onChanged: (value) {
-            //       setState(() {
-            //         _selectedPerfume = value;
-            //       });
-            //       if (value != null && value != 'None') {
-            //         Provider.of<CartProvider>(
-            //           context,
-            //           listen: false,
-            //         ).setPerfume(value);
-            //       } else {
-            //         Provider.of<CartProvider>(
-            //           context,
-            //           listen: false,
-            //         ).setPerfume('');
-            //       }
-            //     },
-            //   ),
-            // ),
             const SizedBox(height: 30),
             CustomElevatedButton(
               label: 'Confirm & Continue',
@@ -183,7 +141,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
             child: Row(
               children: [
                 Image.asset(imgPath, height: 80, width: 93, fit: BoxFit.cover),
-                const SizedBox(width: 70),
+                const SizedBox(width: 60),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

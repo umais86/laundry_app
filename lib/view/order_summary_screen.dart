@@ -17,8 +17,9 @@ class OrderSummaryScreen extends StatelessWidget {
     final cartProvider = Provider.of<CartProvider>(context);
     final cartItems = cartProvider.cartItems;
     final selectedPackaging = cartProvider.packaging ?? "None";
-    final selectedPerfume = cartProvider.perfume ?? "None";
     final steamSelected = cartProvider.isSteamSelected;
+    final menFragrance = Provider.of<CartProvider>(context).menFragrance;
+    final womenFragrance = Provider.of<CartProvider>(context).womenFragrance;
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -68,8 +69,10 @@ class OrderSummaryScreen extends StatelessWidget {
 
               _buildItemRow("Packaging", selectedPackaging),
 
-              if (selectedPerfume.isNotEmpty && selectedPerfume != "None")
-                _buildItemRow("Perfume", selectedPerfume),
+              if (menFragrance != null)
+                _buildItemRow("Men's Fragrance", menFragrance),
+              if (womenFragrance != null)
+                _buildItemRow("Women's Fragrance", womenFragrance),
 
               if (steamSelected) _buildItemRow("Steam Finish", "ON"),
 
@@ -158,9 +161,7 @@ class OrderSummaryScreen extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(2),
-            ),
+            decoration: BoxDecoration(),
             child: Text(
               value,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

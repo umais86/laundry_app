@@ -7,6 +7,7 @@ class FragranceCard extends StatefulWidget {
   final List<String> options;
   final bool initialSwitchValue;
   final Function(bool)? onToggle;
+  final Function(bool isOn, String selectedScent)? onSelectionChanged;
 
   const FragranceCard({
     super.key,
@@ -16,6 +17,7 @@ class FragranceCard extends StatefulWidget {
     required this.options,
     this.initialSwitchValue = true,
     this.onToggle,
+    this.onSelectionChanged,
   });
 
   @override
@@ -31,19 +33,24 @@ class _FragranceCardState extends State<FragranceCard> {
     super.initState();
     isOn = widget.initialSwitchValue;
     selectedScent = widget.options.first;
+
+    // Call only after first build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.onSelectionChanged?.call(isOn, selectedScent);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 177,
-      padding: EdgeInsets.symmetric(horizontal: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
+            color: Colors.black.withAlpha(30),
             blurRadius: 8,
             offset: const Offset(2, 4),
           ),
@@ -62,7 +69,7 @@ class _FragranceCardState extends State<FragranceCard> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Transform.scale(
                 scale: 0.4,
                 child: Switch(
@@ -70,7 +77,13 @@ class _FragranceCardState extends State<FragranceCard> {
                   onChanged: (value) {
                     setState(() {
                       isOn = value;
-                      widget.onToggle?.call(value);
+                    });
+
+                    widget.onToggle?.call(value);
+
+                    // Notify parent safely
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      widget.onSelectionChanged?.call(isOn, selectedScent);
                     });
                   },
                   activeColor: Colors.white,
@@ -83,7 +96,7 @@ class _FragranceCardState extends State<FragranceCard> {
           ),
           Row(
             children: [
-              SizedBox(width: 2),
+              const SizedBox(width: 2),
               if (widget.iconAssetPath != null)
                 Image.asset(
                   widget.iconAssetPath!,
@@ -96,14 +109,12 @@ class _FragranceCardState extends State<FragranceCard> {
               const SizedBox(width: 16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: widget.options
-                    .map(
-                      (option) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: buildRadioOption(option),
-                      ),
-                    )
-                    .toList(),
+                children: widget.options.map((option) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: buildRadioOption(option),
+                  );
+                }).toList(),
               ),
             ],
           ),
@@ -113,12 +124,19 @@ class _FragranceCardState extends State<FragranceCard> {
   }
 
   Widget buildRadioOption(String label) {
-    bool isSelected = selectedScent == label;
+    final isSelected = selectedScent == label;
+
     return GestureDetector(
       onTap: () {
         setState(() {
           selectedScent = label;
         });
+
+        if (isOn) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            widget.onSelectionChanged?.call(isOn, selectedScent);
+          });
+        }
       },
       child: Row(
         children: [

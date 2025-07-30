@@ -5,8 +5,10 @@ class CartProvider extends ChangeNotifier {
   final Map<String, CartItem> _cartItems = {};
 
   String? _packaging;
-  String? _perfume;
+  bool _perfumeSelected = false;
   bool _steamSelected = false;
+  String? _menFragrance;
+  String? _womenFragrance;
 
   void addItem(String name, String iconPath) {
     if (_cartItems.containsKey(name)) {
@@ -43,12 +45,18 @@ class CartProvider extends ChangeNotifier {
 
   String? get packaging => _packaging;
 
-  void setPerfume(String perfume) {
-    _perfume = perfume;
+  // void setPerfume(String perfume) {
+  //   _perfume = perfume;
+  //   notifyListeners();
+  // }
+
+  // String? get perfume => _perfume;
+  void togglePerfume(bool selected) {
+    _perfumeSelected = selected;
     notifyListeners();
   }
 
-  String? get perfume => _perfume;
+  bool get isPerfumeSelected => _perfumeSelected;
 
   void toggleSteam(bool selected) {
     _steamSelected = selected;
@@ -56,12 +64,25 @@ class CartProvider extends ChangeNotifier {
   }
 
   bool get isSteamSelected => _steamSelected;
+  void updateMenFragrance(bool isOn, String scent) {
+    _menFragrance = isOn ? scent : null;
+    notifyListeners();
+  }
 
+  String? get menFragrance => _menFragrance;
+  void updateWomenFragrance(bool isOn, String scent) {
+    _womenFragrance = isOn ? scent : null;
+    notifyListeners();
+  }
+
+  String? get womenFragrance => _womenFragrance;
   void resetCart() {
     _cartItems.clear();
     _packaging = null;
-    _perfume = null;
+    _perfumeSelected = false;
     _steamSelected = false;
+    _womenFragrance = null;
+    _menFragrance = null;
     notifyListeners();
   }
 }

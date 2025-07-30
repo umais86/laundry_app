@@ -13,7 +13,7 @@ class CartItem {
     return CartItem(
       name: name ?? this.name,
       quantity: quantity ?? this.quantity,
-      iconPath: iconPath ?? this.iconPath,
+      iconPath: iconPath,
     );
   }
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:par_1/components/card2.dart';
 import 'package:par_1/components/card3.dart';
 import 'package:par_1/components/card4.dart';
+import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/cloth_screen.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/widgets/custom_app_bar1.dart';
+import 'package:provider/provider.dart';
 
 class WashTypeScreen extends StatefulWidget {
   const WashTypeScreen({super.key});
@@ -102,12 +104,26 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                     title: "Men’s Fragrance",
                     options: ['Elixir', 'Imperial'],
                     iconAssetPath: 'assets/icons/perfume.png',
+                    initialSwitchValue: true,
+                    onSelectionChanged: (isOn, selectedScent) {
+                      Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      ).updateMenFragrance(isOn, selectedScent);
+                    },
                   ),
                   Spacer(),
                   FragranceCard(
                     title: "Women’s Fragrance",
                     options: ['Orchid', 'Moony'],
                     iconAssetPath: 'assets/icons/perfume.png',
+                    initialSwitchValue: false,
+                    onSelectionChanged: (isOn, selectedScent) {
+                      Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      ).updateWomenFragrance(isOn, selectedScent);
+                    },
                   ),
                 ],
               ),
