@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:par_1/components/dropdown_menu.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -38,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: CircleAvatar(
             backgroundColor: Colors.white,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () => CustomDropdown(),
               icon: Image.asset('assets/icons/tab.png'),
             ),
           ),
