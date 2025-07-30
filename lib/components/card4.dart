@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,16 +21,16 @@ class _SteamCardState extends State<SteamCard> {
 
     return Container(
       width: double.infinity,
-      height: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      height: 80.h,
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            offset: const Offset(4, 2),
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 6,
+            offset: Offset(4.w, 2.h),
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 6.r,
           ),
         ],
       ),
@@ -40,9 +41,9 @@ class _SteamCardState extends State<SteamCard> {
             children: [
               Text(
                 widget.title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Color(0xFFD1A32F),
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: const Color(0xFFD1A32F),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -64,8 +65,8 @@ class _SteamCardState extends State<SteamCard> {
           ),
           Text(
             widget.title2,
-            style: const TextStyle(
-              fontSize: 12,
+            style: TextStyle(
+              fontSize: 12.sp,
               fontWeight: FontWeight.w400,
               color: Colors.black87,
             ),

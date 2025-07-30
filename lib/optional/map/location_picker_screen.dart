@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -21,6 +22,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
     _determinePosition();
   }
 
+  // ─────────────────── Location helpers ───────────────────
   Future<void> _determinePosition() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -33,21 +35,19 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
       await Geolocator.openAppSettings();
       return;
     }
-
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission != LocationPermission.whileInUse &&
-          permission != LocationPermission.always) {
+          permission != LocationPermission.always)
         return;
-      }
     }
 
-    final locationSettings = const LocationSettings(
+    const locationSettings = LocationSettings(
       accuracy: LocationAccuracy.best,
       distanceFilter: 5,
     );
 
-    Position position = await Geolocator.getCurrentPosition(
+    final position = await Geolocator.getCurrentPosition(
       locationSettings: locationSettings,
     );
 
@@ -55,9 +55,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
       currentLocation = LatLng(position.latitude, position.longitude);
     });
 
-    if (mapController != null) {
-      mapController!.animateCamera(CameraUpdate.newLatLng(currentLocation!));
-    }
+    mapController?.animateCamera(CameraUpdate.newLatLng(currentLocation!));
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -69,36 +67,45 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
 
   Future<void> _confirmLocation() async {
     try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(
+      final placemarks = await placemarkFromCoordinates(
         selectedLatLng!.latitude,
         selectedLatLng!.longitude,
       );
 
-      String address = "Selected Location";
+      var address = "Selected Location";
       if (placemarks.isNotEmpty) {
-        final place = placemarks.first;
+        final p = placemarks.first;
         address = [
-          place.name,
-          place.street,
-          place.subLocality,
-          place.locality,
+          p.name,
+          p.street,
+          p.subLocality,
+          p.locality,
         ].where((s) => s != null && s.isNotEmpty).join(', ');
       }
 
       Navigator.pop(context, {'latlng': selectedLatLng, 'address': address});
-    } catch (e) {
+    } catch (_) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text("Failed to fetch address")));
     }
   }
 
+  // ───────────────────────── UI ────────────────────────────
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Select Location")),
+      appBar: AppBar(
+        title: Text("Select Location", style: TextStyle(fontSize: 16.sp)),
+      ),
       body: currentLocation == null
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: SizedBox(
+                height: 40.h,
+                width: 40.h,
+                child: const CircularProgressIndicator(),
+              ),
+            )
           : Stack(
               children: [
                 GoogleMap(
@@ -108,11 +115,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
                     zoom: 15,
                   ),
                   myLocationEnabled: true,
-                  onTap: (LatLng latLng) {
-                    setState(() {
-                      selectedLatLng = latLng;
-                    });
-                  },
+                  onTap: (latLng) => setState(() => selectedLatLng = latLng),
                   markers: selectedLatLng != null
                       ? {
                           Marker(
@@ -124,16 +127,30 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
                 ),
                 if (selectedLatLng != null)
                   Positioned(
-                    bottom: 20,
-                    left: 16,
-                    right: 16,
-                    child: ElevatedButton.icon(
-                      onPressed: _confirmLocation,
-                      icon: const Icon(Icons.check),
-                      label: const Text("Select This Location"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        backgroundColor: Colors.blue,
+                    bottom: 20.h,
+                    left: 16.w,
+                    right: 16.w,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: _confirmLocation,
+                        icon: Icon(Icons.check, size: 20.sp),
+                        label: Text(
+                          "Select This Location",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 14.h,
+                          ), // responsive
+                          backgroundColor: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
                       ),
                     ),
                   ),

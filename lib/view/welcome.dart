@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/utils/button.dart';
 
@@ -10,47 +11,45 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.r),
                 child: Image.asset(
                   'assets/images/welcome-img.png',
-                  height: 400,
+                  height: 400.h,
                   width: double.infinity,
                   fit: BoxFit.fill,
                 ),
               ),
-              SizedBox(height: 45),
-              // Spacer(),
+              SizedBox(height: 45.h),
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
                     color: Colors.black87,
                   ),
                   children: [
-                    TextSpan(text: 'Welcome to '),
+                    const TextSpan(text: 'Welcome to '),
                     TextSpan(
                       text: 'The Akoya',
                       style: TextStyle(color: txtColor),
                     ),
-                    TextSpan(text: '\nCollection'),
+                    const TextSpan(text: '\nCollection'),
                   ],
                 ),
               ),
-              SizedBox(height: 14),
+              SizedBox(height: 14.h),
               Text(
                 'Welcome to The Akoya Collection — where every garment is treated with luxury, care, and precision.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14, color: Colors.black87),
+                style: TextStyle(fontSize: 14.sp, color: Colors.black87),
               ),
-
-              Spacer(),
+              const Spacer(),
               CustomElevatedButton(
                 label: 'Let’s get started',
                 onPressed: () {

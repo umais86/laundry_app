@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card2.dart';
 import 'package:par_1/components/card3.dart';
 import 'package:par_1/components/card4.dart';
@@ -33,7 +34,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -41,22 +42,22 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                 'How would you like us to clean \nyour garments?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                   color: txtColor,
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: 10.h),
+              Text(
                 'Choose the cleaning style that best fits your \nneeds — standard care or express service.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.black87,
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Row(
                 children: [
                   Card2(
@@ -82,22 +83,22 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Text(
                 'Customize Your Wash',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                   color: txtColor,
                 ),
               ),
-              SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Text(
-                textAlign: TextAlign.center,
                 'Choose optional features to personalize your \nexperience.',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   FragranceCard(
@@ -127,18 +128,18 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               SteamCard(
                 title: 'Add Steam Finish',
                 title2: 'Remove Wrinkles With Steam Press',
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               CustomElevatedButton(
                 label: 'Confirm & Continue',
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => ClothScreen()),
+                    MaterialPageRoute(builder: (_) => const ClothScreen()),
                   );
                 },
               ),

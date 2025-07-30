@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
@@ -18,76 +19,78 @@ class OrderSummaryScreen extends StatelessWidget {
     final cartItems = cartProvider.cartItems;
     final selectedPackaging = cartProvider.packaging ?? "None";
     final steamSelected = cartProvider.isSteamSelected;
-    final menFragrance = Provider.of<CartProvider>(context).menFragrance;
-    final womenFragrance = Provider.of<CartProvider>(context).womenFragrance;
+    final menFragrance = cartProvider.menFragrance;
+    final womenFragrance = cartProvider.womenFragrance;
 
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back,
-                      size: 22,
+                      size: 22.sp,
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  const Text(
+                  SizedBox(width: 10.w),
+                  Text(
                     "Order Summary",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Center(
                 child: Text(
                   "Review before confirming",
-                  style: TextStyle(color: txtColor, fontSize: 18),
+                  style: TextStyle(color: txtColor, fontSize: 18.sp),
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
-              const Text(
+              Text(
                 'Selected Items',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 8),
-              if (cartItems.isEmpty) const Text("No items selected."),
+              SizedBox(height: 8.h),
+
+              if (cartItems.isEmpty)
+                Text("No items selected.", style: TextStyle(fontSize: 14.sp)),
               ...cartItems.values
                   .where((item) => item.quantity > 0)
                   .map((item) => _buildCartItemRow(item)),
 
-              const SizedBox(height: 20),
-
+              SizedBox(height: 20.h),
               _buildItemRow("Packaging", selectedPackaging),
 
               if (menFragrance != null)
                 _buildItemRow("Men's Fragrance", menFragrance),
               if (womenFragrance != null)
                 _buildItemRow("Women's Fragrance", womenFragrance),
-
               if (steamSelected) _buildItemRow("Steam Finish", "ON"),
-
               if (from.isNotEmpty) _buildItemRow("From", from),
               if (to.isNotEmpty) _buildItemRow("To", to),
 
-              const SizedBox(height: 30),
-
+              SizedBox(height: 30.h),
               CustomElevatedButton(
                 label: 'Confirm & Order WhatsApp',
                 onPressed: () {
                   debugPrint("Order confirmed. From: $from | To: $to");
                 },
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
             ],
           ),
         ),
@@ -97,44 +100,45 @@ class OrderSummaryScreen extends StatelessWidget {
 
   Widget _buildCartItemRow(CartItem item) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+      margin: EdgeInsets.symmetric(vertical: 6.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Row(
         children: [
           Image.asset(
             item.iconPath,
-            width: 30,
-            height: 30,
+            width: 30.w,
+            height: 30.h,
             cacheWidth: 60,
             cacheHeight: 60,
-            errorBuilder: (context, error, stackTrace) {
-              return const Icon(Icons.image_not_supported, size: 30);
-            },
+            errorBuilder: (context, error, stackTrace) =>
+                Icon(Icons.image_not_supported, size: 30.sp),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Text(
               item.name,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            height: 28.h,
+            width: 28.w,
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
               color: txtColor,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Text(
               item.quantity.toString(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: 14.sp,
               ),
             ),
           ),
@@ -145,11 +149,11 @@ class OrderSummaryScreen extends StatelessWidget {
 
   Widget _buildItemRow(String label, String value) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+      margin: EdgeInsets.symmetric(vertical: 6.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Row(
@@ -157,14 +161,13 @@ class OrderSummaryScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             child: Text(
               value,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
             ),
           ),
         ],

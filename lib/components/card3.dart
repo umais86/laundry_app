@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FragranceCard extends StatefulWidget {
   final String title;
@@ -34,7 +35,6 @@ class _FragranceCardState extends State<FragranceCard> {
     isOn = widget.initialSwitchValue;
     selectedScent = widget.options.first;
 
-    // Call only after first build
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.onSelectionChanged?.call(isOn, selectedScent);
     });
@@ -43,16 +43,16 @@ class _FragranceCardState extends State<FragranceCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 177,
-      padding: const EdgeInsets.symmetric(horizontal: 6),
+      width: 167.w,
+      padding: EdgeInsets.symmetric(horizontal: 6.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(18.r),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withAlpha(30),
-            blurRadius: 8,
-            offset: const Offset(2, 4),
+            blurRadius: 8.r,
+            offset: Offset(2.w, 4.h),
           ),
         ],
       ),
@@ -63,13 +63,13 @@ class _FragranceCardState extends State<FragranceCard> {
             children: [
               Text(
                 widget.title,
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: Color(0xFFD1A32F),
+                style: TextStyle(
+                  fontSize: 9.50.sp,
+                  color: const Color(0xFFD1A32F),
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Transform.scale(
                 scale: 0.4,
                 child: Switch(
@@ -81,7 +81,6 @@ class _FragranceCardState extends State<FragranceCard> {
 
                     widget.onToggle?.call(value);
 
-                    // Notify parent safely
                     WidgetsBinding.instance.addPostFrameCallback((_) {
                       widget.onSelectionChanged?.call(isOn, selectedScent);
                     });
@@ -96,22 +95,22 @@ class _FragranceCardState extends State<FragranceCard> {
           ),
           Row(
             children: [
-              const SizedBox(width: 2),
+              SizedBox(width: 2.w),
               if (widget.iconAssetPath != null)
                 Image.asset(
                   widget.iconAssetPath!,
-                  width: 24,
-                  height: 24,
+                  width: 24.w,
+                  height: 24.h,
                   color: const Color(0xFFD1A32F),
                 )
               else if (widget.icon != null)
-                Icon(widget.icon, color: const Color(0xFFD1A32F), size: 24),
-              const SizedBox(width: 16),
+                Icon(widget.icon, color: const Color(0xFFD1A32F), size: 24.sp),
+              SizedBox(width: 14.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.options.map((option) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
+                    padding: EdgeInsets.only(bottom: 8.h),
                     child: buildRadioOption(option),
                   );
                 }).toList(),
@@ -141,30 +140,30 @@ class _FragranceCardState extends State<FragranceCard> {
       child: Row(
         children: [
           Container(
-            width: 22,
-            height: 22,
+            width: 18.w,
+            height: 18.h,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.black87, width: 2),
+              border: Border.all(color: Colors.black87, width: 2.w),
             ),
             child: isSelected
                 ? Center(
                     child: Container(
-                      width: 10,
-                      height: 10,
-                      decoration: const BoxDecoration(
+                      width: 10.w,
+                      height: 10.h,
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Color(0xFFD1A32F),
+                        color: const Color(0xFFD1A32F),
                       ),
                     ),
                   )
                 : null,
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 6.w),
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 16,
+            style: TextStyle(
+              fontSize: 16.sp,
               color: Colors.black87,
               fontWeight: FontWeight.w500,
             ),

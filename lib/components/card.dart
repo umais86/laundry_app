@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/colors.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -20,36 +21,38 @@ class ServiceCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        height: 90,
-        width: 150,
+        height: 99.h,
+        width: 150.w,
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
             BoxShadow(
-              color: Color(0x33000000),
-              blurRadius: 10,
-              spreadRadius: 1,
-              offset: Offset(3, 5),
+              color: const Color(0x33000000),
+              blurRadius: 10.r,
+              spreadRadius: 1.r,
+              offset: Offset(3.w, 5.h),
             ),
           ],
-          border: Border(top: BorderSide(color: txtColor, width: 4)),
+          border: Border(
+            top: BorderSide(color: txtColor, width: 4.w),
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF2C2C2C),
+                color: const Color(0xFF2C2C2C),
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 2),
+            SizedBox(height: 2.h),
             icon,
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
@@ -9,9 +10,9 @@ class HowItWork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -19,7 +20,7 @@ class HowItWork extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back, size: 22),
+              icon: Icon(Icons.arrow_back, size: 22.sp),
             ),
             Center(
               child: Column(
@@ -28,44 +29,47 @@ class HowItWork extends StatelessWidget {
                     'How It Work',
                     style: TextStyle(
                       color: txtColor,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(
                     'From pickup to doorstep delivery, here’s \nhow Akoya makes it seamless.',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 16.h),
             _containerRow(
               'assets/icons/locate.png',
               'Schedule Pickup',
               'Choose time & location\nthat suits you.',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             _containerRow(
               'assets/icons/garments.png',
               'Garments Collected',
               'Our team collects, your \nlaundry with care.',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             _containerRow(
               'assets/icons/drop.png',
               'Custom Wash & Treatment',
               'Fragrance , Steam packaging \nyour way.',
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             _containerRow(
               'assets/icons/home1.png',
               'Delivered To Your Door',
               'We deliver fresh, clean \ngarments on time.',
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 30.h),
             CustomElevatedButton(label: 'Schedule a pickup', onPressed: () {}),
           ],
         ),
@@ -75,22 +79,27 @@ class HowItWork extends StatelessWidget {
 
   Widget _containerRow(String iconPath, String title, String text) {
     return Container(
-      height: 90,
+      height: 90.h,
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: EdgeInsets.symmetric(vertical: 8.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
-          BoxShadow(offset: Offset(1, 1), color: Colors.grey.shade50),
+          BoxShadow(offset: Offset(1.w, 1.h), color: Colors.grey.shade50),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         child: Row(
           children: [
-            Image.asset(iconPath, height: 40, width: 40, color: Colors.black),
-            const SizedBox(width: 36),
+            Image.asset(
+              iconPath,
+              height: 40.h,
+              width: 40.w,
+              color: Colors.black,
+            ),
+            SizedBox(width: 36.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,16 +107,16 @@ class HowItWork extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: TextStyle(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6.h),
                   Text(
                     text,
-                    style: const TextStyle(
-                      fontSize: 12,
+                    style: TextStyle(
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

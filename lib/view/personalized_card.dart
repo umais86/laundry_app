@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/order_details/order_summary_screen.dart';
@@ -42,7 +43,7 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12.w),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -51,9 +52,9 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
               children: [
                 IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back, size: 22),
+                  icon: Icon(Icons.arrow_back, size: 22.sp),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6.h),
                 Center(
                   child: Column(
                     children: [
@@ -62,20 +63,20 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: txtColor,
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 6),
-                      const Text(
+                      SizedBox(height: 6.h),
+                      Text(
                         'Want to include a card with your name or \ndedicate it to someone?',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // From Field
                       TextFormField(
@@ -89,16 +90,16 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 10,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 12.w,
+                            vertical: 10.h,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // To Field
                       TextFormField(
@@ -112,17 +113,17 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
                           fillColor: Colors.white,
                           filled: true,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 10,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 12.w,
+                            vertical: 10.h,
                           ),
                         ),
                       ),
 
-                      const SizedBox(height: 60),
+                      SizedBox(height: 60.h),
                       CustomElevatedButton(
                         label: 'Confirm & Continue',
                         onPressed: _submitaddress,

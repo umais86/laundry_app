@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:par_1/components/dropdown_menu.dart';
 import 'package:par_1/view/how_it_work.dart';
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {

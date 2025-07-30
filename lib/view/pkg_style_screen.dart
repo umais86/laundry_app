@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
@@ -15,9 +16,6 @@ class PkgStyleScreen extends StatefulWidget {
 
 class _PkgStyleScreenState extends State<PkgStyleScreen> {
   String? _selectedPackaging;
-  // String? _selectedPerfume;
-
-  final List<String> perfumes = ['None', 'Lavender', 'Rose', 'Citrus'];
 
   void _onSelectPackaging(String packaging) {
     setState(() {
@@ -44,31 +42,28 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back, size: 22),
+              onPressed: () => Navigator.pop(context),
+              icon: Icon(Icons.arrow_back, size: 22.sp),
             ),
-            const SizedBox(height: 6),
+            SizedBox(height: 6.h),
             Center(
               child: Text(
                 'How Would You Like Us To \nPackage Your Garments',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: txtColor,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
 
-            // Packaging Options
             _buildContainer(
               'Plastic Wrap',
               'assets/images/plastic.png',
@@ -76,7 +71,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               () => _onSelectPackaging('Plastic Wrap'),
               isSelected: _selectedPackaging == 'Plastic Wrap',
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             _buildContainer(
               'Luxury Fabric Wrap',
               'assets/images/fabric.png',
@@ -84,7 +79,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               () => _onSelectPackaging('Luxury Fabric Wrap'),
               isSelected: _selectedPackaging == 'Luxury Fabric Wrap',
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             _buildContainer(
               'Premium Box',
               'assets/images/premium.png',
@@ -93,8 +88,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               isSelected: _selectedPackaging == 'Premium Box',
             ),
 
-            const SizedBox(height: 24),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             CustomElevatedButton(
               label: 'Confirm & Continue',
               onPressed: _onConfirm,
@@ -115,15 +109,15 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0.w),
         child: Container(
           width: double.infinity,
-          height: 100,
+          height: 100.h,
           decoration: BoxDecoration(
             color: isSelected
-                ? const Color(0xFFE29A4F).withValues(alpha: 0.15)
+                ? const Color(0xFFE29A4F).withOpacity(0.15)
                 : Colors.white,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             boxShadow: [
               BoxShadow(
                 offset: Offset(3, 2),
@@ -133,30 +127,36 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
             ],
             border: Border.all(
               color: isSelected ? const Color(0xFFE29A4F) : Colors.transparent,
-              width: 1.5,
+              width: 1.5.w,
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             child: Row(
               children: [
-                Image.asset(imgPath, height: 80, width: 93, fit: BoxFit.cover),
-                const SizedBox(width: 60),
+                Image.asset(
+                  imgPath,
+                  height: 80.h,
+                  width: 93.w,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 40.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 17,
+                      style: TextStyle(
+                        fontSize: 17.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     Text(
                       label,
-                      style: const TextStyle(
-                        fontSize: 12,
+                      style: TextStyle(
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w300,
                       ),
                     ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/colors.dart';
 
 class Card2 extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
   final Widget icon;
-  final List<String> features; // New for bullet points
+  final List<String> features;
 
   const Card2({
     super.key,
@@ -22,53 +23,55 @@ class Card2 extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        height: 176,
-        width: 165,
+        height: 180.h,
+        width: 165.w,
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
             BoxShadow(
-              color: Color(0x33000000),
-              blurRadius: 10,
-              spreadRadius: 1,
-              offset: Offset(3, 5),
+              color: const Color(0x33000000),
+              blurRadius: 10.r,
+              spreadRadius: 1.r,
+              offset: Offset(3.w, 5.h),
             ),
           ],
-          border: const Border(top: BorderSide(color: gold, width: 4)),
+          border: Border(
+            top: BorderSide(color: gold, width: 4.w),
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(child: icon),
-            const SizedBox(height: 6),
+            SizedBox(height: 6.h),
             Center(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 14,
+                style: TextStyle(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                   color: gold,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-
+            SizedBox(height: 8.h),
             ...features.map((feature) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 4),
+                padding: EdgeInsets.only(bottom: 4.h),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.circle, size: 8, color: gold),
-                    const SizedBox(width: 6),
+                    Icon(Icons.circle, size: 8.r, color: gold),
+                    SizedBox(width: 6.w),
                     Expanded(
                       child: Text(
                         feature,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: txtColor1,
                         ),
@@ -77,7 +80,7 @@ class Card2 extends StatelessWidget {
                   ],
                 ),
               );
-            }),
+            }).toList(),
           ],
         ),
       ),

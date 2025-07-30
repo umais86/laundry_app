@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/wash_type_screen.dart';
@@ -26,30 +27,30 @@ class Homepage extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/dress.png',
-              height: 253,
+              height: 253.h,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
               'The Akoya Collection',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
                 color: txtColor,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8),
+            Padding(
+              padding: EdgeInsets.all(8.w),
               child: Text(
                 textAlign: TextAlign.center,
                 'The Akoya Collection is where care meets class. Elevate your laundry experience with exclusive, personalized touches',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w300),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Padding(
-              padding: EdgeInsetsGeometry.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -71,23 +72,23 @@ class Homepage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Text(
               textAlign: TextAlign.center,
               'How would you like us to clean your garments?',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
                 color: txtColor,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ServiceCard(
                   title: 'Standard Wash',
-                  icon: Image.asset('assets/icons/drop.png'),
+                  icon: Image.asset('assets/icons/drop.png', height: 40.h),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -97,7 +98,7 @@ class Homepage extends StatelessWidget {
                 ),
                 ServiceCard(
                   title: 'Express Wash',
-                  icon: Image.asset('assets/icons/flash.png'),
+                  icon: Image.asset('assets/icons/flash.png', height: 40.h),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -107,7 +108,7 @@ class Homepage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
@@ -117,20 +118,20 @@ class Homepage extends StatelessWidget {
   Widget _buildIconLabel(String iconPath, String label, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(30.r),
       child: Column(
         children: [
           CircleAvatar(
             backgroundColor: Colors.white,
-            radius: 24,
-            child: Image.asset(iconPath, height: 30, width: 30),
+            radius: 24.r,
+            child: Image.asset(iconPath, height: 30.h, width: 30.w),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Text(
             label,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 12,
+            style: TextStyle(
+              fontSize: 12.sp,
               fontWeight: FontWeight.w400,
               color: Colors.black,
             ),
