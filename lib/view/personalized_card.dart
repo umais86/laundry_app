@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
-import 'package:par_1/view/order_summary_screen.dart';
+import 'package:par_1/view/order_details/order_summary_screen.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
 
 class PersonalizedCard extends StatefulWidget {

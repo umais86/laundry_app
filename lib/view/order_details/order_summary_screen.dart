@@ -3,8 +3,8 @@ import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
-import '../providers/cart_provider.dart';
-import '../models/cart_item.dart';
+import '../../providers/cart_provider.dart';
+import '../../models/cart_item.dart';
 
 class OrderSummaryScreen extends StatelessWidget {
   final String from;

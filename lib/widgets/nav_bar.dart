@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:par_1/view/discover.dart';
-import 'package:par_1/view/homepage.dart';
-import 'package:par_1/view/profile.dart';
-import 'package:par_1/view/support.dart';
+import 'package:par_1/view/nav_screens/discover.dart';
+import 'package:par_1/view/nav_screens/homepage.dart';
+import 'package:par_1/view/nav_screens/profile.dart';
+import 'package:par_1/view/nav_screens/support.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
