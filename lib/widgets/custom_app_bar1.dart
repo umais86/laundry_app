@@ -29,9 +29,16 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: color,
       elevation: 0,
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: Image.asset('assets/images/pic.png', height: 40, width: 40),
+      leading: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: CircleAvatar(
+              radius: 21,
+              backgroundImage: AssetImage('assets/images/logo.png'),
+            ),
+          ),
+        ],
       ),
       title: Row(
         children: [

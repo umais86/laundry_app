@@ -34,7 +34,7 @@ class _Card2State extends State<Card2> {
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
-        height: 176.h,
+        height: 182.h,
         width: 163.w,
         duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
