@@ -24,16 +24,20 @@ class _Card2State extends State<Card2> {
   List<String> selectedFeatures = [];
 
   @override
-  Widget build(BuildContext context) {
-    const gold = Color(0xFFF0C341);
+  void initState() {
+    super.initState();
+    selectedFeatures = List.from(widget.features);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
-        height: 180.h,
-        width: 165.w,
+        height: 176.h,
+        width: 163.w,
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.r),
@@ -46,7 +50,7 @@ class _Card2State extends State<Card2> {
             ),
           ],
           border: Border(
-            top: BorderSide(color: gold, width: 4.w),
+            top: BorderSide(color: txtColor, width: 4.w),
           ),
         ),
         child: Column(
@@ -60,56 +64,51 @@ class _Card2State extends State<Card2> {
                 style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
-                  color: gold,
+                  color: txtColor,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 6.h),
             Expanded(
               child: ListView.builder(
                 itemCount: widget.features.length,
-                padding: EdgeInsets.zero,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final feature = widget.features[index];
                   final isSelected = selectedFeatures.contains(feature);
-
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: 4.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Transform.scale(
-                          scale: 0.7, // smaller checkbox
-                          child: Checkbox(
-                            value: isSelected,
-                            activeColor: gold,
-                            side: BorderSide(width: 1.5.w),
-                            onChanged: (bool? value) {
-                              setState(() {
-                                if (value == true) {
-                                  selectedFeatures.add(feature);
-                                } else {
-                                  selectedFeatures.remove(feature);
-                                }
-                              });
-                            },
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Transform.scale(
+                        scale: 0.7,
+                        child: Checkbox(
+                          value: isSelected,
+                          activeColor: txtColor,
+                          visualDensity: VisualDensity.compact,
+                          side: BorderSide(width: 1.5.w),
+                          onChanged: (bool? value) {
+                            setState(() {
+                              if (value == true) {
+                                selectedFeatures.add(feature);
+                              } else {
+                                selectedFeatures.remove(feature);
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 4.w),
+                      Expanded(
+                        child: Text(
+                          feature,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: txtColor1,
                           ),
                         ),
-                        SizedBox(width: 4.w),
-                        Expanded(
-                          child: Text(
-                            feature,
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500,
-                              color: txtColor1,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 },
               ),
