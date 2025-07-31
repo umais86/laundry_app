@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 14.h),
               Text(
-                'Welcome to The Akoya Collection — where every garment is treated with luxury, care, and precision.',
+                'Welcome to The Akoya Collection — where every garment is treated with luxury, care, \nand precision.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14.sp, color: Colors.black87),
               ),
