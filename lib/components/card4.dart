@@ -29,7 +29,7 @@ class _SteamCardState extends State<SteamCard> {
         boxShadow: [
           BoxShadow(
             offset: Offset(4.w, 2.h),
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 6.r,
           ),
         ],

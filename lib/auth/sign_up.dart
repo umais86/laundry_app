@@ -46,7 +46,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         SizedBox(height: 12.h),
                         Text(
-                          'Create your Akoya account to enjoy personalized \nservices and premium laundry care.',
+                          'Create your Akoya account to enjoy personalized services and premium \nlaundry care.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14.sp,
@@ -59,10 +59,10 @@ class _SignUpState extends State<SignUp> {
 
                   SizedBox(height: 34.h),
                   _buildLabel('Name'),
-                  _buildInputField(nameController, 'Sarah'),
+                  _buildInputField(nameController, 'John doe'),
                   SizedBox(height: 16.h),
                   _buildLabel('Email'),
-                  _buildInputField(emailcontroller, 'Sarah@gmail.com'),
+                  _buildInputField(emailcontroller, 'Johndoe@gmail.com'),
                   SizedBox(height: 16.h),
                   _buildLabel('Password'),
                   _buildPasswordField(passwordcontroller),
@@ -83,11 +83,14 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       Text('Agree with ', style: TextStyle(fontSize: 13.sp)),
-                      Text(
-                        'terms & conditions',
-                        style: TextStyle(
-                          color: Color(0xFFB48B25),
-                          fontSize: 13.sp,
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'terms & conditions',
+                          style: TextStyle(
+                            color: Color(0xFFB48B25),
+                            fontSize: 13.sp,
+                          ),
                         ),
                       ),
                     ],
@@ -164,7 +167,10 @@ class _SignUpState extends State<SignUp> {
         filled: true,
         hintText: hint,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide.none,
+        ),
       ),
     );
   }
@@ -183,7 +189,10 @@ class _SignUpState extends State<SignUp> {
           onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide.none,
+        ),
       ),
     );
   }

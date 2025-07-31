@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/colors.dart';
 
-class Card2 extends StatelessWidget {
+class Card2 extends StatefulWidget {
   final VoidCallback onTap;
   final String title;
   final Widget icon;
@@ -17,16 +17,23 @@ class Card2 extends StatelessWidget {
   });
 
   @override
+  State<Card2> createState() => _Card2State();
+}
+
+class _Card2State extends State<Card2> {
+  List<String> selectedFeatures = [];
+
+  @override
   Widget build(BuildContext context) {
     const gold = Color(0xFFF0C341);
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: AnimatedContainer(
         height: 180.h,
         width: 165.w,
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.r),
@@ -45,11 +52,11 @@ class Card2 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(child: icon),
-            SizedBox(height: 6.h),
+            Center(child: widget.icon),
+            SizedBox(height: 4.h),
             Center(
               child: Text(
-                title,
+                widget.title,
                 style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
@@ -58,29 +65,55 @@ class Card2 extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 8.h),
-            ...features.map((feature) {
-              return Padding(
-                padding: EdgeInsets.only(bottom: 4.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(Icons.circle, size: 8.r, color: gold),
-                    SizedBox(width: 6.w),
-                    Expanded(
-                      child: Text(
-                        feature,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: txtColor1,
+            SizedBox(height: 6.h),
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.features.length,
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final feature = widget.features[index];
+                  final isSelected = selectedFeatures.contains(feature);
+
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 4.h),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Transform.scale(
+                          scale: 0.7, // smaller checkbox
+                          child: Checkbox(
+                            value: isSelected,
+                            activeColor: gold,
+                            side: BorderSide(width: 1.5.w),
+                            onChanged: (bool? value) {
+                              setState(() {
+                                if (value == true) {
+                                  selectedFeatures.add(feature);
+                                } else {
+                                  selectedFeatures.remove(feature);
+                                }
+                              });
+                            },
+                          ),
                         ),
-                      ),
+                        SizedBox(width: 4.w),
+                        Expanded(
+                          child: Text(
+                            feature,
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: txtColor1,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              );
-            }).toList(),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

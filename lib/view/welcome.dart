@@ -53,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
               CustomElevatedButton(
                 label: 'Let’s get started',
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushNamed(context, '/signup');
                 },
               ),
             ],

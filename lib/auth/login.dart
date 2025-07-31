@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/auth/sign_up.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
+import 'package:par_1/view/nav_screens/homepage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -98,7 +100,12 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: CustomElevatedButton(
                     label: 'Sign In',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => Homepage()),
+                      );
+                    },
                   ),
                 ),
                 SizedBox(height: 24),
@@ -120,7 +127,12 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => SignUp()),
+                    );
+                  },
                   child: Text(
                     'Create Your Account',
                     style: TextStyle(
