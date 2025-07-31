@@ -4,6 +4,7 @@ import 'package:par_1/auth/sign_up.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/nav_screens/homepage.dart';
+import 'package:par_1/widgets/nav_bar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -103,7 +104,7 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => Homepage()),
+                        MaterialPageRoute(builder: (_) => NavBar()),
                       );
                     },
                   ),
