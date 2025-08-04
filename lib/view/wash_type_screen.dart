@@ -22,14 +22,14 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar1(
-        color: Colors.white,
+        color: white,
         color1: txtColor1,
         color2: txtColor1,
-        color3: Colors.white,
-        color4: Colors.white,
+        color3: white,
+        color4: white,
         color5: txtColor,
-        color6: Colors.white,
-        color7: Colors.white,
+        color6: white,
+        color7: white,
         color8: txtColor,
       ),
       body: SingleChildScrollView(

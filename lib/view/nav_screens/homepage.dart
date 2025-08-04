@@ -13,14 +13,14 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar1(
         color: txtColor,
-        color1: Colors.white,
-        color2: Colors.white,
-        color3: Colors.white,
-        color4: Colors.white,
-        color5: Colors.white,
+        color1: white,
+        color2: white,
+        color3: white,
+        color4: white,
+        color5: white,
         color6: txtColor1,
         color7: txtColor1,
-        color8: Colors.white,
+        color8: white,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -122,7 +122,7 @@ class Homepage extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: white,
             radius: 24.r,
             child: Image.asset(iconPath, height: 30.h, width: 30.w),
           ),

@@ -115,8 +115,8 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
           height: 100.h,
           decoration: BoxDecoration(
             color: isSelected
-                ? const Color(0xFFE29A4F).withOpacity(0.15)
-                : Colors.white,
+                ? const Color(0xFFE29A4F).withValues(alpha: 0.15)
+                : white,
             borderRadius: BorderRadius.circular(8.r),
             boxShadow: [
               BoxShadow(

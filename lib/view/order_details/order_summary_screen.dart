@@ -103,7 +103,7 @@ class OrderSummaryScreen extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 6.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: white,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey.shade300),
       ),
@@ -137,7 +137,7 @@ class OrderSummaryScreen extends StatelessWidget {
               item.quantity.toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: white,
                 fontSize: 14.sp,
               ),
             ),
@@ -152,7 +152,7 @@ class OrderSummaryScreen extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 6.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: white,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey.shade300),
       ),

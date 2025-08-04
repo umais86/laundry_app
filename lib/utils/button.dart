@@ -26,12 +26,12 @@ class CustomElevatedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         minimumSize: Size(double.infinity, 45.h),
         backgroundColor: color ?? primaryColor,
-        foregroundColor: textColor ?? Colors.white,
+        foregroundColor: textColor ?? white,
       ),
       onPressed: onPressed,
       child: Text(
         label,
-        style: TextStyle(color: textColor ?? Colors.white, fontSize: 16.sp),
+        style: TextStyle(color: textColor ?? white, fontSize: 16.sp),
       ),
     );
   }

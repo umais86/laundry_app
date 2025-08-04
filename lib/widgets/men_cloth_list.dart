@@ -70,7 +70,7 @@ class MenClothList extends StatelessWidget {
       height: 45,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(

@@ -83,7 +83,7 @@ class HowItWork extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.symmetric(vertical: 8.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: white,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(offset: Offset(1.w, 1.h), color: Colors.grey.shade50),

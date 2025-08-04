@@ -26,7 +26,7 @@ class ServiceCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: white,
           borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
             BoxShadow(

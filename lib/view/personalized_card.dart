@@ -87,7 +87,7 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
                             : null,
                         decoration: InputDecoration(
                           labelText: 'From',
-                          fillColor: Colors.white,
+                          fillColor: white,
                           filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.r),
@@ -110,7 +110,7 @@ class _PersonalizedCardState extends State<PersonalizedCard> {
                             : null,
                         decoration: InputDecoration(
                           labelText: 'To',
-                          fillColor: Colors.white,
+                          fillColor: white,
                           filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.r),

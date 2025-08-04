@@ -49,7 +49,7 @@ class Counter1 extends StatelessWidget {
             ? Icon(icon, color: Colors.white, size: 15)
             : Text(
                 label ?? '',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 13,

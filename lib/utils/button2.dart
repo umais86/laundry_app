@@ -23,8 +23,8 @@ class CustomElevatedButton2 extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         minimumSize: Size(139.w, 40.h),
-        backgroundColor: isSelected ? primaryColor : Colors.white,
-        foregroundColor: isSelected ? Colors.white : Colors.black,
+        backgroundColor: isSelected ? primaryColor : white,
+        foregroundColor: isSelected ? white : Colors.black,
         padding:
             padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         shape: RoundedRectangleBorder(
