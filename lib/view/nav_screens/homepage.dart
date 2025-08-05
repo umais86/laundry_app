@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card.dart';
+import 'package:par_1/components/perfume_card.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/wash_type_screen.dart';
@@ -138,6 +139,13 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16.h),
+                  PerfumeCard(
+                    imagePath: 'assets/images/orchid.png',
+                    text: 'Orchid Akoya',
+                    subtext:
+                        'Elegant floral notes to enhance freshness in every fabric',
+                    isCarting: true,
+                  ),
                 ],
               ),
             ),

@@ -68,10 +68,23 @@ class PerfumeCard extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                CustomElevatedButton3(
-                  label: 'Add',
-                  onPressed: () {},
-                  isSelected: isCarting,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '7 QAR',
+                      style: TextStyle(
+                        color: txtColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    CustomElevatedButton3(
+                      label: 'Add',
+                      onPressed: () {},
+                      isSelected: isCarting,
+                    ),
+                  ],
                 ),
               ],
             ),
