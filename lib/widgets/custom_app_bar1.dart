@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:par_1/view/how_it_work.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/view/appbar_icon/how_it_work.dart';
+import 'package:par_1/view/appbar_icon/testinomial.dart';
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
   final Color color;
@@ -32,9 +34,9 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
       leading: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 12),
+            padding: EdgeInsets.only(left: 9.04.w),
             child: CircleAvatar(
-              radius: 21,
+              radius: 21.r,
               backgroundImage: AssetImage('assets/images/logo.png'),
               backgroundColor: Colors.transparent,
             ),
@@ -49,7 +51,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 "Hello 👋",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: color1,
                 ),
@@ -57,7 +59,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 'Al-Danah',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w600,
                   color: color2,
                 ),
@@ -68,7 +70,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 8),
+          padding: EdgeInsets.only(right: 8.w),
           child: CircleAvatar(
             backgroundColor: color4,
             child: IconButton(
@@ -87,8 +89,8 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
                 showMenu<String>(
                   context: context,
                   position: RelativeRect.fromLTRB(
-                    offset.dx + size.width - 50,
-                    offset.dy + size.height - 60,
+                    offset.dx + size.width - 50.w,
+                    offset.dy + size.height - 60.h,
                     offset.dx + size.width,
                     0,
                   ),
@@ -97,12 +99,21 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
                       value: 'How It Works ?',
                       child: Text('How It Works ?'),
                     ),
+                    PopupMenuItem<String>(
+                      value: 'Testinomials',
+                      child: Text('Testinomial & Reviews'),
+                    ),
                   ],
                 ).then((selectedValue) {
                   if (selectedValue == 'How It Works ?') {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (_) => const HowItWork()),
+                    );
+                  } else if (selectedValue == 'Testinomials') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const Testinomial()),
                     );
                   }
                 });
@@ -113,7 +124,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(45),
+        preferredSize: Size.fromHeight(45.h),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: SizedBox(
@@ -129,24 +140,24 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
                       prefixIcon: Icon(Icons.search, color: color6),
                       filled: true,
                       fillColor: color5,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 10,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 10.h,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.r),
                         borderSide: BorderSide.none,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12.w),
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 40.w,
+                  height: 40.h,
                   decoration: BoxDecoration(
                     color: color8,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: IconButton(
                     onPressed: () {},

@@ -127,7 +127,7 @@ class OrderSummaryScreen extends StatelessWidget {
           ),
           Container(
             height: 28.h,
-            width: 28.w,
+            width: 26.w,
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
               color: txtColor,
