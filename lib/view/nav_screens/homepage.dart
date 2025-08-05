@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card.dart';
+import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/wash_type_screen.dart';
 import 'package:par_1/widgets/custom_app_bar1.dart';
@@ -109,6 +110,11 @@ class Homepage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20.h),
+            CustomElevatedButton(
+              label: 'Continue to Garment Section',
+              onPressed: () {},
+            ),
+            SizedBox(height: 16.h),
           ],
         ),
       ),
