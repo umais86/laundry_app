@@ -104,7 +104,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   FragranceCard(
                     title: "Men’s Fragrance",
                     options: ['Elixir', 'Imperial'],
-                    iconAssetPath: 'assets/icons/perfume.png',
+                    imagePath: 'assets/images/perfume.png',
                     initialSwitchValue: true,
                     onSelectionChanged: (isOn, selectedScent) {
                       Provider.of<CartProvider>(
@@ -117,7 +117,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   FragranceCard(
                     title: "Women’s Fragrance",
                     options: ['Orchid', 'Moony'],
-                    iconAssetPath: 'assets/icons/perfume.png',
+                    imagePath: 'assets/images/perfume.png',
                     initialSwitchValue: false,
                     onSelectionChanged: (isOn, selectedScent) {
                       Provider.of<CartProvider>(

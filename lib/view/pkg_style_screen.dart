@@ -112,7 +112,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
         padding: EdgeInsets.all(8.0.w),
         child: Container(
           width: double.infinity,
-          height: 100.h,
+          height: 115.h,
           decoration: BoxDecoration(
             color: isSelected
                 ? const Color(0xFFE29A4F).withValues(alpha: 0.15)
@@ -134,11 +134,14 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             child: Row(
               children: [
-                Image.asset(
-                  imgPath,
-                  height: 80.h,
-                  width: 93.w,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(10.r),
+                  child: Image.asset(
+                    imgPath,
+                    height: 95.h,
+                    width: 93.w,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 SizedBox(width: 40.w),
                 Column(

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class FragranceCard extends StatefulWidget {
   final String title;
   final IconData? icon;
-  final String? iconAssetPath;
+  final String? imagePath;
   final List<String> options;
   final bool initialSwitchValue;
   final Function(bool)? onToggle;
@@ -14,7 +14,7 @@ class FragranceCard extends StatefulWidget {
     super.key,
     required this.title,
     this.icon,
-    this.iconAssetPath,
+    this.imagePath,
     required this.options,
     this.initialSwitchValue = true,
     this.onToggle,
@@ -95,22 +95,22 @@ class _FragranceCardState extends State<FragranceCard> {
           ),
           Row(
             children: [
-              SizedBox(width: 2.w),
-              if (widget.iconAssetPath != null)
-                Image.asset(
-                  widget.iconAssetPath!,
-                  width: 24.w,
-                  height: 24.h,
-                  color: const Color(0xFFD1A32F),
-                )
-              else if (widget.icon != null)
-                Icon(widget.icon, color: const Color(0xFFD1A32F), size: 24.sp),
+              if (widget.imagePath != null)
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(10.r),
+                  child: Image.asset(
+                    widget.imagePath!,
+                    width: 49.3.w,
+                    height: 60.h,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               SizedBox(width: 14.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: widget.options.map((option) {
                   return Padding(
-                    padding: EdgeInsets.only(bottom: 8.h),
+                    padding: EdgeInsets.fromLTRB(0, 8, 0, 6),
                     child: buildRadioOption(option),
                   );
                 }).toList(),
