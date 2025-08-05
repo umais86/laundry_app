@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:par_1/view/how_it_work.dart';
+import 'package:par_1/view/appbar_icon/how_it_work.dart';
+import 'package:par_1/view/appbar_icon/testinomial.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -67,12 +68,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         value: 'How It Works ?',
                         child: Text('How It Works ?'),
                       ),
+                      PopupMenuItem<String>(
+                        value: 'Testinomials',
+                        child: Text('Testinomial & Reviews'),
+                      ),
                     ],
                   ).then((selectedValue) {
                     if (selectedValue == 'How It Works ?') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const HowItWork()),
+                      );
+                    } else if (selectedValue == 'Testinomials') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Testinomial()),
                       );
                     }
                   });

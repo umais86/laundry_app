@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:par_1/view/how_it_work.dart';
+import 'package:par_1/view/appbar_icon/how_it_work.dart';
 
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown({super.key});
