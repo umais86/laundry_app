@@ -75,7 +75,7 @@ class Homepage extends StatelessWidget {
             SizedBox(height: 12.h),
             Text(
               textAlign: TextAlign.center,
-              'How would you like us to clean your garments?',
+              'How would you like us to clean\nyour garments?',
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
