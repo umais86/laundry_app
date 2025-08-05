@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:par_1/utils/button2.dart';
+import 'package:par_1/utils/button3.dart';
 import 'package:par_1/utils/colors.dart';
 
 class PerfumeCard extends StatelessWidget {
@@ -10,44 +8,74 @@ class PerfumeCard extends StatelessWidget {
   final String text;
   final String subtext;
   final bool isCarting;
- const PerfumeCard({
+  const PerfumeCard({
     super.key,
     required this.imagePath,
     required this.text,
     required this.subtext,
     required this.isCarting,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
-      width: 150.w,
+      height: 280.h,
+      width: 185.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
+        color: Colors.white,
         boxShadow: [
-          BoxShadow(blurRadius: 10.r, spreadRadius: 2, offset: Offset(2, 2)),
+          BoxShadow(
+            blurRadius: 4.r,
+            spreadRadius: 0.4,
+            offset: Offset(1.5, 2),
+            color: Colors.black38,
+          ),
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            height: 80,
-            width: double.infinity,
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(16.r),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              height: 165,
+              width: double.infinity,
+            ),
           ),
-          SizedBox(height: 10.h),
-          Text(
-            text,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+          SizedBox(height: 6.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+                SizedBox(height: 6.h),
+                Text(
+                  subtext,
+                  style: TextStyle(
+                    color: subColor,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                CustomElevatedButton3(
+                  label: 'Add',
+                  onPressed: () {},
+                  isSelected: isCarting,
+                ),
+              ],
+            ),
           ),
-          SizedBox(height: 10.h),
-          Text(
-            subtext,
-            style: TextStyle(color: subColor, fontSize: 14.sp),
-          ),
-          CustomElevatedButton2(label: 'Add', onPressed: (){}, isSelected: )
         ],
       ),
     );

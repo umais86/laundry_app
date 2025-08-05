@@ -110,11 +110,38 @@ class Homepage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20.h),
-            CustomElevatedButton(
-              label: 'Continue to Garment Section',
-              onPressed: () {},
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Column(
+                children: [
+                  CustomElevatedButton(
+                    label: 'Continue to Garment Section',
+                    onPressed: () {},
+                  ),
+
+                  SizedBox(height: 16.h),
+                  Text(
+                    'Akoya Signature Fragrances',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w700,
+                      color: txtColor,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Premium scents crafted to elevate your laundry experience',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                ],
+              ),
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
