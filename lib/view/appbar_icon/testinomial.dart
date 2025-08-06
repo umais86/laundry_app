@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/components/star_rating_card.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/appbar_icon/star_rating.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
@@ -13,7 +14,7 @@ class Testinomial extends StatelessWidget {
       backgroundColor: white,
       appBar: CustomAppBar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -22,7 +23,7 @@ class Testinomial extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back, size: 22),
+              icon: Icon(Icons.arrow_back, size: 22.r),
             ),
             SizedBox(height: 2.h),
             Center(
@@ -64,6 +65,34 @@ class Testinomial extends StatelessWidget {
                   StarRating(),
                 ],
               ),
+            ),
+            SizedBox(height: 16.h),
+            StarRatingCard(
+              imagePath: 'assets/images/pic.png',
+              text: "Sheikha Al-Thani",
+              text2: 'UI Designer',
+              text3: '3.0',
+              text4:
+                  "Akoya's attention to detail is unmatched.The only service I trust with my collection.",
+            ),
+
+            SizedBox(height: 8.h),
+            StarRatingCard(
+              imagePath: 'assets/images/pic 2.png',
+              text: "Mr. Khalid Al-Mansoori",
+              text2: 'Executive Director',
+              text3: '4.0',
+              text4:
+                  "As someone who wears bespoke suits daily, Akoya's executive service saves hours each week.",
+            ),
+            SizedBox(height: 8.h),
+            StarRatingCard(
+              imagePath: 'assets/images/pic 3.png',
+              text: "Mrs. Eleanor Rutherford",
+              text2: "Diplomat's Wife",
+              text3: '5.0',
+              text4:
+                  "The fragrance infusion option is divine. My clothes return smelling like a Parisian boutique.",
             ),
           ],
         ),
