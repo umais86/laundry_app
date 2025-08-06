@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/view/appbar_icon/how_it_work.dart';
 import 'package:par_1/view/appbar_icon/testinomial.dart';
+import 'package:par_1/view/nav_screens/nav_bar.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -15,7 +16,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.only(left: 12),
-        child: Image.asset('assets/images/logo.png', height: 40, width: 40),
+        child: InkWell(
+          onTap: () => NavBar(),
+          child: Image.asset('assets/images/logo.png', height: 40, width: 40),
+        ),
       ),
       title: Row(
         children: [

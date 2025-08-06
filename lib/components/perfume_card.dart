@@ -20,7 +20,7 @@ class PerfumeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 280.h,
-      width: 185.w,
+      width: 170.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         color: Colors.white,

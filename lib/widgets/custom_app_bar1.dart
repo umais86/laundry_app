@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/view/appbar_icon/how_it_work.dart';
 import 'package:par_1/view/appbar_icon/testinomial.dart';
+import 'package:par_1/view/nav_screens/nav_bar.dart';
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
   final Color color;
@@ -35,10 +36,13 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 9.04.w),
-            child: CircleAvatar(
-              radius: 21.r,
-              backgroundImage: AssetImage('assets/images/logo.png'),
-              backgroundColor: Colors.transparent,
+            child: InkWell(
+              onTap: () => NavBar(),
+              child: CircleAvatar(
+                radius: 21.r,
+                backgroundImage: AssetImage('assets/images/logo.png'),
+                backgroundColor: Colors.transparent,
+              ),
             ),
           ),
         ],
