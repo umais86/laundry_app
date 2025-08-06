@@ -23,7 +23,7 @@ class _StarRatingState extends State<StarRating> {
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 5,
-          itemPadding: EdgeInsets.symmetric(horizontal: 4.w),
+          itemSize: 30,
           itemBuilder: (context, _) => Icon(Icons.star, color: txtColor),
           onRatingUpdate: (rating) {
             setState(() {
@@ -31,10 +31,10 @@ class _StarRatingState extends State<StarRating> {
             });
           },
         ),
-        Text(
-          'Rating: ${currentRating.toStringAsFixed(1)} ',
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
-        ),
+        // Text(
+        //   'Rating: ${currentRating.toStringAsFixed(1)} ',
+        //   style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+        // ),
       ],
     );
   }

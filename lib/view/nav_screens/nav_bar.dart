@@ -27,7 +27,7 @@ class _NavBarState extends State<NavBar> {
       body: _screens[_currentIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
-        height: 42,
+        height: 45,
         child: FloatingActionButton(
           backgroundColor: const Color.fromARGB(193, 0, 0, 0),
           shape: const CircleBorder(),
@@ -38,7 +38,7 @@ class _NavBarState extends State<NavBar> {
 
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: -4,
+        notchMargin: -2,
         color: const Color(0xFFD4AF37),
         child: SizedBox(
           child: BottomNavigationBar(
