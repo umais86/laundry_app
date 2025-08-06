@@ -48,7 +48,18 @@ class Testinomial extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            Row(children: [Text('Reviews:'), SizedBox(width: 8)]),
+            Row(
+              children: [
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(width: 8),
+              ],
+            ),
           ],
         ),
       ),
