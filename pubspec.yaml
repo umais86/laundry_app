@@ -43,6 +43,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_rating: ^2.0.2
   flutter_rating_bar: ^4.0.1
+  video_player: ^2.10.0
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,7 @@ flutter:
     - assets/images/
     - assets/icons/home.png
     - assets/icons/
+    - assets/videos/akoya_home.mp4
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

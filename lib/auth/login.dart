@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/auth/forgot_pass.dart';
 import 'package:par_1/auth/sign_up.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
@@ -27,22 +28,25 @@ class _LoginState extends State<Login> {
             child: Column(
               children: [
                 Container(
-                  height: 150,
+                  height: 150.h,
                   width: double.infinity,
                   color: Colors.black,
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      padding: EdgeInsets.symmetric(vertical: 30.h),
                       child: Column(
                         children: [
                           Text(
                             'AKOYA PREMIUM LAUNDARY',
-                            style: TextStyle(fontSize: 20, color: txtColor),
+                            style: TextStyle(fontSize: 20.sp, color: txtColor),
                           ),
                           SizedBox(height: 20),
                           Text(
                             'Sign In to your account',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       ),
@@ -50,9 +54,9 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 8.h,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,8 +89,13 @@ class _LoginState extends State<Login> {
                       ),
                       Text('Remember me ', style: TextStyle(fontSize: 13.sp)),
                       Spacer(),
-                      InkWell(
-                        onTap: () {},
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => ForgotPassword()),
+                          );
+                        },
                         child: Text(
                           'Forgot Password?',
                           style: TextStyle(color: txtColor, fontSize: 13.sp),
