@@ -160,7 +160,7 @@ class _LoginState extends State<Login> {
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.email_outlined),
         hintText: hint,
-        fillColor: const Color.fromARGB(255, 211, 227, 234),
+        fillColor: const Color.fromARGB(255, 215, 236, 245),
         filled: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
@@ -177,7 +177,7 @@ class _LoginState extends State<Login> {
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock_outline_sharp),
         hintText: hint,
-        fillColor: const Color.fromARGB(255, 211, 227, 234),
+        fillColor: const Color.fromARGB(255, 215, 236, 245),
         filled: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(

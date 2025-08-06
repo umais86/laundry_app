@@ -163,7 +163,7 @@ class _SignUpState extends State<SignUp> {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 211, 227, 234),
+        fillColor: const Color.fromARGB(255, 215, 236, 245),
         filled: true,
         hintText: hint,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
@@ -180,11 +180,12 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 211, 227, 234),
+        fillColor: const Color.fromARGB(255, 215, 236, 245),
         filled: true,
         suffixIcon: IconButton(
           icon: Icon(
             _obscurePassword ? Icons.visibility_off : Icons.visibility,
+            color: Colors.black45,
           ),
           onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
         ),
@@ -202,7 +203,7 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       obscureText: true,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 211, 227, 234),
+        fillColor: const Color.fromARGB(255, 215, 236, 245),
         filled: true,
         hintText: '. . . . . . . . . . ',
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
