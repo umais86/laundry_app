@@ -25,20 +25,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 45,
-        child: FloatingActionButton(
-          backgroundColor: const Color.fromARGB(193, 0, 0, 0),
-          shape: const CircleBorder(),
-          onPressed: () {},
-          child: const Icon(Icons.add, size: 28, color: Colors.white),
-        ),
-      ),
-
       bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: -2,
         color: const Color(0xFFD4AF37),
         child: SizedBox(
           child: BottomNavigationBar(
@@ -66,6 +53,10 @@ class _NavBarState extends State<NavBar> {
                   width: 22,
                 ),
                 label: 'Discover',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.phone_enabled, size: 22),
+                label: 'Contact Us',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(

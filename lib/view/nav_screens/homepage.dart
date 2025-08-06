@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card.dart';
-import 'package:par_1/components/perfume_card.dart';
 import 'package:par_1/components/video_player.dart';
-import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/wash_type_screen.dart';
 import 'package:par_1/widgets/custom_app_bar1.dart';
@@ -27,7 +25,7 @@ class Homepage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: 1200,
+          height: 660.h,
           child: Column(
             children: [
               // Image.asset(
@@ -39,7 +37,7 @@ class Homepage extends StatelessWidget {
               Expanded(
                 child: CustomSizedVideo(
                   width: MediaQuery.of(context).size.width,
-                  height: 250,
+                  height: 260.h,
                 ),
               ),
               SizedBox(height: 16.h),
@@ -123,48 +121,48 @@ class Homepage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                child: Column(
-                  children: [
-                    CustomElevatedButton(
-                      label: 'Continue to Garment Section',
-                      onPressed: () {},
-                    ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(
+              //     horizontal: 16,
+              //     vertical: 12,
+              //   ),
+              //   child: Column(
+              //     children: [
+              //       CustomElevatedButton(
+              //         label: 'Continue to Garment Section',
+              //         onPressed: () {},
+              //       ),
 
-                    SizedBox(height: 16.h),
-                    Text(
-                      'Akoya Signature Fragrances',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w700,
-                        color: txtColor,
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    Text(
-                      'Premium scents crafted to elevate your laundry experience',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-                    PerfumeCard(
-                      imagePath: 'assets/images/orchid.png',
-                      text: 'Orchid Akoya',
-                      subtext:
-                          'Elegant floral notes to enhance freshness in every fabric',
-                      isCarting: true,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20.h),
+              //       SizedBox(height: 16.h),
+              //       Text(
+              //         'Akoya Signature Fragrances',
+              //         style: TextStyle(
+              //           fontSize: 18.sp,
+              //           fontWeight: FontWeight.w700,
+              //           color: txtColor,
+              //         ),
+              //       ),
+              //       SizedBox(height: 10.h),
+              //       Text(
+              //         'Premium scents crafted to elevate your laundry experience',
+              //         textAlign: TextAlign.center,
+              //         style: TextStyle(
+              //           fontSize: 14.sp,
+              //           fontWeight: FontWeight.w300,
+              //         ),
+              //       ),
+              //       SizedBox(height: 16.h),
+              //       PerfumeCard(
+              //         imagePath: 'assets/images/orchid.png',
+              //         text: 'Orchid Akoya',
+              //         subtext:
+              //             'Elegant floral notes to enhance freshness in every fabric',
+              //         isCarting: true,
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(height: 20.h),
             ],
           ),
         ),
