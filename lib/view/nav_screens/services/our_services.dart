@@ -24,7 +24,7 @@ class _OurServicesState extends State<OurServices> {
               text: 'Executive Dressing',
               subText:
                   'Crisp finishes for business attire with precision steam technology',
-              price: '35 QAR',
+              price: 35,
             ),
             Spacer(),
             OurServiceCard(
@@ -33,7 +33,7 @@ class _OurServicesState extends State<OurServices> {
               text: 'Executive Dressing',
               subText:
                   'Crisp finishes for business attire with precision steam technology',
-              price: '35 QAR',
+              price: 35,
             ),
           ],
         ),

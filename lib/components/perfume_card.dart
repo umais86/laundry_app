@@ -8,12 +8,14 @@ class PerfumeCard extends StatelessWidget {
   final String text;
   final String subtext;
   final bool isCarting;
+  final double price;
   const PerfumeCard({
     super.key,
     required this.imagePath,
     required this.text,
     required this.subtext,
     required this.isCarting,
+    required this.price,
   });
 
   @override
@@ -71,7 +73,7 @@ class PerfumeCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '7 QAR',
+                      'QAR. ${price.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: txtColor,
                         fontSize: 16.sp,

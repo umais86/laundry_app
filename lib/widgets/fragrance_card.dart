@@ -40,6 +40,7 @@ class FragranceCard1 extends StatelessWidget {
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
                     isCarting: true,
+                    price: 7,
                   ),
                   PerfumeCard(
                     imagePath: 'assets/images/imperial.png',
@@ -47,6 +48,7 @@ class FragranceCard1 extends StatelessWidget {
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
                     isCarting: true,
+                    price: 7,
                   ),
                 ],
               ),
@@ -69,6 +71,7 @@ class FragranceCard1 extends StatelessWidget {
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
                     isCarting: true,
+                    price: 7,
                   ),
                   PerfumeCard(
                     imagePath: 'assets/images/moony.png',
@@ -76,6 +79,7 @@ class FragranceCard1 extends StatelessWidget {
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
                     isCarting: true,
+                    price: 7,
                   ),
                 ],
               ),

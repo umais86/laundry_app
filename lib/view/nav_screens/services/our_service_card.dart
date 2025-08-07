@@ -7,7 +7,7 @@ class OurServiceCard extends StatelessWidget {
   final String imagePath;
   final String text;
   final String subText;
-  final String price;
+  final double price;
   final bool iscarting;
 
   const OurServiceCard({
@@ -61,21 +61,16 @@ class OurServiceCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             child: Column(
               children: [
-                Text(
-                  subText,
-                  style: TextStyle(
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                Text(subText, style: TextStyle(fontSize: 11.sp)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      price,
+                      'QAR ${price.toStringAsFixed(0)}',
                       style: TextStyle(
                         color: txtColor,
                         fontWeight: FontWeight.w700,
+                        fontSize: 14.sp,
                       ),
                     ),
                     CustomElevatedButton3(
