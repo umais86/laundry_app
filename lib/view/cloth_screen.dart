@@ -30,7 +30,11 @@ class _ClothScreenState extends State<ClothScreen> {
               children: [
                 IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: Icon(Icons.arrow_back, size: 25.sp),
+                  icon: Icon(
+                    Icons.arrow_back,
+                    size: 25.sp,
+                    color: Colors.black,
+                  ),
                 ),
                 SizedBox(width: 5.w),
                 Text(

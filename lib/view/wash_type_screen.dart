@@ -7,6 +7,7 @@ import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/cloth_screen.dart';
 import 'package:par_1/utils/button.dart';
+import 'package:par_1/view/fragrance.dart';
 import 'package:par_1/widgets/custom_app_bar1.dart';
 import 'package:par_1/widgets/fragrance_card.dart';
 import 'package:provider/provider.dart';
@@ -100,28 +101,28 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                 style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
               SizedBox(height: 6.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Choose Fragrances',
-                    style: TextStyle(
-                      color: txtColor,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => FragranceCard1()),
-                      );
-                    },
-                    child: Text('See All', style: TextStyle(color: txtColor)),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       'Choose Fragrances',
+              //       style: TextStyle(
+              //         color: txtColor,
+              //         fontSize: 16.sp,
+              //         fontWeight: FontWeight.w600,
+              //       ),
+              //     ),
+              //     TextButton(
+              //       onPressed: () {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(builder: (_) => FragranceCard1()),
+              //         );
+              //       },
+              //       child: Text('See All', style: TextStyle(color: txtColor)),
+              //     ),
+              //   ],
+              // ),
               // Row(
               //   children: [
               //     FragranceCard(
@@ -162,7 +163,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const ClothScreen()),
+                    MaterialPageRoute(builder: (_) => const Fragrance()),
                   );
                 },
               ),
