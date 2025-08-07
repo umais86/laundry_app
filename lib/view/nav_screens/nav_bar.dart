@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:par_1/view/nav_screens/contact_us.dart';
 import 'package:par_1/view/nav_screens/discover.dart';
 import 'package:par_1/view/nav_screens/home/homepage.dart';
 import 'package:par_1/view/nav_screens/services/our_services.dart';
@@ -18,6 +19,7 @@ class _NavBarState extends State<NavBar> {
     Homepage(),
     Discover(),
     OurServices(),
+    ContactUs(),
     Profile(),
   ];
 
