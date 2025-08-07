@@ -21,7 +21,7 @@ class ServiceCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        height: 99.h,
+        height: 101.h,
         width: 150.w,
         duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),

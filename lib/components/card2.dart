@@ -32,7 +32,7 @@ class _Card2State extends State<Card2> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      height: 182.h,
+      height: 192.h,
       width: 163.w,
       duration: const Duration(milliseconds: 200),
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
