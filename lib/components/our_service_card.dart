@@ -3,33 +3,36 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button3.dart';
 import 'package:par_1/utils/colors.dart';
 
-class PerfumeCard extends StatelessWidget {
+class OurServiceCard extends StatelessWidget {
   final String imagePath;
   final String text;
-  final String subtext;
-  final bool isCarting;
-  const PerfumeCard({
+  final String subText;
+  final String price;
+  final bool iscarting;
+
+  const OurServiceCard({
     super.key,
     required this.imagePath,
+    required this.iscarting,
     required this.text,
-    required this.subtext,
-    required this.isCarting,
+    required this.subText,
+    required this.price,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 275.h,
+      height: 250.h,
       width: 170.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         color: white,
         boxShadow: [
           BoxShadow(
-            blurRadius: 4.r,
-            spreadRadius: 0.4,
-            offset: Offset(1.5, 2),
-            color: Colors.black38,
+            spreadRadius: 2.r,
+            blurRadius: 0.4.r,
+            color: Colors.black12,
+            offset: Offset(0, 1),
           ),
         ],
       ),
@@ -40,48 +43,45 @@ class PerfumeCard extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(16.r),
             child: Image.asset(
               imagePath,
-              fit: BoxFit.cover,
-              height: 150.r,
+              height: 119.h,
               width: double.infinity,
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.cover,
             ),
           ),
           SizedBox(height: 6.h),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  text,
+                  subText,
                   style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: 6.h),
-                Text(
-                  subtext,
-                  style: TextStyle(
-                    color: subColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '7 QAR',
+                      price,
                       style: TextStyle(
                         color: txtColor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                     CustomElevatedButton3(
                       label: 'Add',
                       onPressed: () {},
-                      isSelected: isCarting,
+                      isSelected: iscarting,
                     ),
                   ],
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/view/nav_screens/discover.dart';
 import 'package:par_1/view/nav_screens/homepage.dart';
+import 'package:par_1/view/nav_screens/our_services.dart';
 import 'package:par_1/view/nav_screens/profile.dart';
 
 class NavBar extends StatefulWidget {
@@ -13,7 +14,12 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [Homepage(), Discover(), Profile()];
+  final List<Widget> _screens = const [
+    Homepage(),
+    Discover(),
+    OurServices(),
+    Profile(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -58,7 +64,11 @@ class _NavBarState extends State<NavBar> {
                 icon: Icon(Icons.phone_enabled, size: 22),
                 label: 'Contact Us',
               ),
-              
+              BottomNavigationBarItem(
+                icon: Icon(Icons.phone_enabled, size: 22),
+                label: 'Contact Us',
+              ),
+
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'assets/icons/profile.png',
