@@ -122,35 +122,35 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  FragranceCard(
-                    title: "Men’s Fragrance",
-                    options: ['Elixir', 'Imperial'],
-                    imagePath: 'assets/images/perfume.png',
-                    initialSwitchValue: true,
-                    onSelectionChanged: (isOn, selectedScent) {
-                      Provider.of<CartProvider>(
-                        context,
-                        listen: false,
-                      ).updateMenFragrance(isOn, selectedScent);
-                    },
-                  ),
-                  Spacer(),
-                  FragranceCard(
-                    title: "Women’s Fragrance",
-                    options: ['Orchid', 'Moony'],
-                    imagePath: 'assets/images/perfume.png',
-                    initialSwitchValue: false,
-                    onSelectionChanged: (isOn, selectedScent) {
-                      Provider.of<CartProvider>(
-                        context,
-                        listen: false,
-                      ).updateWomenFragrance(isOn, selectedScent);
-                    },
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     FragranceCard(
+              //       title: "Men’s Fragrance",
+              //       options: ['Elixir', 'Imperial'],
+              //       imagePath: 'assets/images/perfume.png',
+              //       initialSwitchValue: true,
+              //       onSelectionChanged: (isOn, selectedScent) {
+              //         Provider.of<CartProvider>(
+              //           context,
+              //           listen: false,
+              //         ).updateMenFragrance(isOn, selectedScent);
+              //       },
+              //     ),
+              //     Spacer(),
+              //     FragranceCard(
+              //       title: "Women’s Fragrance",
+              //       options: ['Orchid', 'Moony'],
+              //       imagePath: 'assets/images/perfume.png',
+              //       initialSwitchValue: false,
+              //       onSelectionChanged: (isOn, selectedScent) {
+              //         Provider.of<CartProvider>(
+              //           context,
+              //           listen: false,
+              //         ).updateWomenFragrance(isOn, selectedScent);
+              //       },
+              //     ),
+              //   ],
+              // ),
               SizedBox(height: 16.h),
               SteamCard(
                 title: 'Add Steam Finish',
