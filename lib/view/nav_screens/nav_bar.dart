@@ -58,6 +58,7 @@ class _NavBarState extends State<NavBar> {
                 icon: Icon(Icons.phone_enabled, size: 22),
                 label: 'Contact Us',
               ),
+              
               BottomNavigationBarItem(
                 icon: Image.asset(
                   'assets/icons/profile.png',

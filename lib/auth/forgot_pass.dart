@@ -75,12 +75,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 _buildLabel('Email Address'),
                 SizedBox(height: 8.h),
                 _buildInputField(emailcontrolller, 'your@mail.com'),
-                SizedBox(height: 22.h),
+                SizedBox(height: 26.h),
                 CustomElevatedButton(
                   label: 'Send Reset Code',
                   onPressed: () {},
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 26.h),
                 Row(
                   children: [
                     Expanded(child: Divider(thickness: 1.8)),
@@ -95,7 +95,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     Expanded(child: Divider(thickness: 1.8)),
                   ],
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 26.h),
                 TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -103,12 +103,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       MaterialPageRoute(builder: (_) => Login()),
                     );
                   },
-                  child: Text(
-                    'Back to Sign In',
-                    style: TextStyle(
-                      color: txtColor,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
+                  child: Center(
+                    child: Text(
+                      'Back to Sign In',
+                      style: TextStyle(
+                        color: txtColor,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
