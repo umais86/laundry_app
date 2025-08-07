@@ -62,7 +62,7 @@ class _NavBarState extends State<NavBar> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.phone_enabled, size: 22),
-                label: 'Contact Us',
+                label: 'Services',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.phone_enabled, size: 22),
