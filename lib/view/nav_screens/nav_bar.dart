@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/nav_screens/contact_us.dart';
 import 'package:par_1/view/nav_screens/discover.dart';
 import 'package:par_1/view/nav_screens/home/homepage.dart';
@@ -63,7 +64,7 @@ class _NavBarState extends State<NavBar> {
                 label: 'Discover',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.phone_enabled, size: 22),
+                icon: Image.asset('assets/icons/service.png', color: white),
                 label: 'Services',
               ),
               BottomNavigationBarItem(
