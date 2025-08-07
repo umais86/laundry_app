@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/view/nav_screens/discover.dart';
-import 'package:par_1/view/nav_screens/homepage.dart';
-import 'package:par_1/view/nav_screens/our_services.dart';
+import 'package:par_1/view/nav_screens/home/homepage.dart';
+import 'package:par_1/view/nav_screens/services/our_services.dart';
 import 'package:par_1/view/nav_screens/profile.dart';
 
 class NavBar extends StatefulWidget {

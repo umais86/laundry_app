@@ -22,7 +22,7 @@ class OurServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.h,
+      height: 230.h,
       width: 170.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
@@ -66,7 +66,7 @@ class OurServiceCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'QAR ${price.toStringAsFixed(0)}',
+                      "QAR ${price.toStringAsFixed(0)}",
                       style: TextStyle(
                         color: txtColor,
                         fontWeight: FontWeight.w700,
@@ -74,7 +74,7 @@ class OurServiceCard extends StatelessWidget {
                       ),
                     ),
                     CustomElevatedButton3(
-                      label: 'Add',
+                      label: 'Order',
                       onPressed: () {},
                       isSelected: iscarting,
                     ),
