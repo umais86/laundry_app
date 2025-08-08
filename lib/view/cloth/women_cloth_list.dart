@@ -8,12 +8,12 @@ import 'package:par_1/widgets/counter.dart';
 class WomenClothList extends StatelessWidget {
   const WomenClothList({super.key});
 
-  final List<Map<String, String>> womenClothes = const [
-    {"icon": "assets/icons/abaya.png", "label": "Abaya"},
-    {"icon": "assets/icons/hijab.png", "label": "Hijab"},
-    {"icon": "assets/icons/kaftan.png", "label": "Kaftan"},
-    {"icon": "assets/icons/skirt.png", "label": "Skirt"},
-    {"icon": "assets/icons/trouser.png", "label": "Trouser"},
+  final List<Map<String, dynamic>> womenClothes = const [
+    {"icon": "assets/icons/abaya.png", "label": "Abaya", "price": 0},
+    {"icon": "assets/icons/hijab.png", "label": "Hijab", "price": 0},
+    {"icon": "assets/icons/kaftan.png", "label": "Kaftan", "price": 0},
+    {"icon": "assets/icons/skirt.png", "label": "Skirt", "price": 0},
+    {"icon": "assets/icons/trouser.png", "label": "Trouser", "price": 0},
   ];
 
   @override
@@ -28,7 +28,11 @@ class WomenClothList extends StatelessWidget {
               final cloth = womenClothes[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: _buildContainer(cloth["icon"]!, cloth["label"]!),
+                child: _buildContainer(
+                  cloth["icon"],
+                  cloth["label"],
+                  cloth["price"],
+                ),
               );
             },
           ),
@@ -66,31 +70,31 @@ class WomenClothList extends StatelessWidget {
     );
   }
 
-  Widget _buildContainer(String iconPath, String label) {
+  Widget _buildContainer(String iconPath, String label, double price) {
     return Container(
-      height: 45,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      height: 45.h,
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             offset: Offset(4, 2),
-            blurRadius: 2,
+            blurRadius: 2.r,
             color: Colors.grey.shade400,
           ),
         ],
       ),
       child: Row(
         children: [
-          Image.asset(iconPath, width: 30, height: 30),
-          const SizedBox(width: 12),
+          Image.asset(iconPath, width: 30.w, height: 30.h),
+          SizedBox(width: 12.w),
           Text(
             label,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          Counter1(clothLabel: label, iconPath: ''),
+          Counter1(clothLabel: label, iconPath: iconPath, price: price),
         ],
       ),
     );

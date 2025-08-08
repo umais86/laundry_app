@@ -36,9 +36,9 @@ class _ContactUsState extends State<ContactUs> {
                 children: [
                   Expanded(child: Divider(thickness: 1.5, color: txtColor)),
                   Text(
-                    'GET IN TOUCH',
+                    'Get In Touch',
                     style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 1.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

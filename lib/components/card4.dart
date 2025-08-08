@@ -18,6 +18,7 @@ class _SteamCardState extends State<SteamCard> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
     bool isOn = cartProvider.isSteamSelected;
+    double steamPrice = cartProvider.steamPrice;
 
     return Container(
       width: double.infinity,
@@ -29,7 +30,7 @@ class _SteamCardState extends State<SteamCard> {
         boxShadow: [
           BoxShadow(
             offset: Offset(4.w, 2.h),
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Colors.black.withAlpha(25),
             blurRadius: 6.r,
           ),
         ],
@@ -64,7 +65,7 @@ class _SteamCardState extends State<SteamCard> {
             ],
           ),
           Text(
-            widget.title2,
+            "${widget.title2}${isOn ? " (QAR ${steamPrice.toStringAsFixed(0)})" : ""}",
             style: TextStyle(
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,

@@ -8,12 +8,12 @@ import 'package:par_1/widgets/counter.dart';
 class MenClothList extends StatelessWidget {
   const MenClothList({super.key});
 
-  final List<Map<String, String>> menClothes = const [
-    {"icon": "assets/icons/kandura.png", "label": "Kandura"},
-    {"icon": "assets/icons/shirt.png", "label": "Shirt"},
-    {"icon": "assets/icons/pant.png", "label": "Pant"},
-    {"icon": "assets/icons/socks.png", "label": "Socks"},
-    {"icon": "assets/icons/trouser.png", "label": "Trouser"},
+  final List<Map<String, dynamic>> menClothes = const [
+    {"icon": "assets/icons/kandura.png", "label": "Kandura", "price": 0},
+    {"icon": "assets/icons/shirt.png", "label": "Shirt", "price": 0},
+    {"icon": "assets/icons/pant.png", "label": "Pant", "price": 0},
+    {"icon": "assets/icons/socks.png", "label": "Socks", "price": 0},
+    {"icon": "assets/icons/trouser.png", "label": "Trouser", "price": 0},
   ];
 
   @override
@@ -28,7 +28,11 @@ class MenClothList extends StatelessWidget {
               final cloth = menClothes[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: _buildContainer(cloth["icon"]!, cloth["label"]!),
+                child: _buildContainer(
+                  cloth["icon"],
+                  cloth["label"],
+                  cloth["price"],
+                ),
               );
             },
           ),
@@ -66,7 +70,7 @@ class MenClothList extends StatelessWidget {
     );
   }
 
-  Widget _buildContainer(String iconPath, String label) {
+  Widget _buildContainer(String iconPath, String label, double price) {
     return Container(
       height: 45.h,
       padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -90,7 +94,7 @@ class MenClothList extends StatelessWidget {
             style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
           ),
           const Spacer(),
-          Counter1(clothLabel: label, iconPath: ''),
+          Counter1(clothLabel: label, iconPath: iconPath, price: price),
         ],
       ),
     );

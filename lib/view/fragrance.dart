@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/perfume_card.dart';
+import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/cloth/cloth_screen.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
+import 'package:provider/provider.dart';
 
 class Fragrance extends StatefulWidget {
   const Fragrance({super.key});
@@ -63,7 +65,10 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Elixr Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
+                    isCarting:
+                        Provider.of<CartProvider>(context).selectedFragrance ==
+                        'Elixr Akoya',
+
                     price: 7,
                   ),
                   PerfumeCard(
@@ -71,7 +76,9 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Imperial Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
+                    isCarting:
+                        Provider.of<CartProvider>(context).selectedFragrance ==
+                        'Imperial Akoya',
                     price: 7,
                   ),
                 ],
@@ -94,7 +101,9 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Orchid Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
+                    isCarting:
+                        Provider.of<CartProvider>(context).selectedFragrance ==
+                        'Orchid Akoya',
                     price: 7,
                   ),
                   PerfumeCard(
@@ -102,7 +111,9 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Moony Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
+                    isCarting:
+                        Provider.of<CartProvider>(context).selectedFragrance ==
+                        'Moony Akoya',
                     price: 7,
                   ),
                 ],

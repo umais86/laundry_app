@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/button3.dart';
 import 'package:par_1/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class PerfumeCard extends StatelessWidget {
   final String imagePath;
@@ -82,7 +84,20 @@ class PerfumeCard extends StatelessWidget {
                     ),
                     CustomElevatedButton3(
                       label: 'Add',
-                      onPressed: () {},
+                      onPressed: () {
+                        final cart = Provider.of<CartProvider>(
+                          context,
+                          listen: false,
+                        );
+                        if (isCarting) {
+                          cart.clearFragrance(); // deselect
+                        } else {
+                          cart.setFragrance(
+                            text,
+                            price,
+                          ); // select this fragrance
+                        }
+                      },
                       isSelected: isCarting,
                     ),
                   ],
