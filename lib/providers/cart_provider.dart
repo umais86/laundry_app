@@ -136,6 +136,34 @@ class CartProvider extends ChangeNotifier {
   List<String> selectedWomenFragrances = [];
   Map<String, double> selectedWomenFragrancePrices = {};
 
+  void addMenFragrance(String name, double price) {
+    if (!selectedMenFragrances.contains(name)) {
+      selectedMenFragrances.add(name);
+      selectedMenFragrancePrices[name] = price;
+      notifyListeners();
+    }
+  }
+
+  void removeMenFragrance(String name) {
+    selectedMenFragrances.remove(name);
+    selectedMenFragrancePrices.remove(name);
+    notifyListeners();
+  }
+
+  void addWomenFragrance(String name, double price) {
+    if (!selectedWomenFragrances.contains(name)) {
+      selectedWomenFragrances.add(name);
+      selectedWomenFragrancePrices[name] = price;
+      notifyListeners();
+    }
+  }
+
+  void removeWomenFragrance(String name) {
+    selectedWomenFragrances.remove(name);
+    selectedWomenFragrancePrices.remove(name);
+    notifyListeners();
+  }
+
   double calculateTotalCost() {
     double total = 0;
 

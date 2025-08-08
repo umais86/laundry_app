@@ -95,58 +95,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
               ),
-              SizedBox(height: 6.h),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       'Choose Fragrances',
-              //       style: TextStyle(
-              //         color: txtColor,
-              //         fontSize: 16.sp,
-              //         fontWeight: FontWeight.w600,
-              //       ),
-              //     ),
-              //     TextButton(
-              //       onPressed: () {
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(builder: (_) => FragranceCard1()),
-              //         );
-              //       },
-              //       child: Text('See All', style: TextStyle(color: txtColor)),
-              //     ),
-              //   ],
-              // ),
-              // Row(
-              //   children: [
-              //     FragranceCard(
-              //       title: "Men’s Fragrance",
-              //       options: ['Elixir', 'Imperial'],
-              //       imagePath: 'assets/images/perfume.png',
-              //       initialSwitchValue: true,
-              //       onSelectionChanged: (isOn, selectedScent) {
-              //         Provider.of<CartProvider>(
-              //           context,
-              //           listen: false,
-              //         ).updateMenFragrance(isOn, selectedScent);
-              //       },
-              //     ),
-              //     Spacer(),
-              //     FragranceCard(
-              //       title: "Women’s Fragrance",
-              //       options: ['Orchid', 'Moony'],
-              //       imagePath: 'assets/images/perfume.png',
-              //       initialSwitchValue: false,
-              //       onSelectionChanged: (isOn, selectedScent) {
-              //         Provider.of<CartProvider>(
-              //           context,
-              //           listen: false,
-              //         ).updateWomenFragrance(isOn, selectedScent);
-              //       },
-              //     ),
-              //   ],
-              // ),
+
               SizedBox(height: 16.h),
               SteamCard(
                 title: 'Add Steam Finish',
@@ -158,7 +107,7 @@ class _WashTypeScreenState extends State<WashTypeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const Fragrance()),
+                    MaterialPageRoute(builder: (_) => const FragranceCard1()),
                   );
                 },
               ),
