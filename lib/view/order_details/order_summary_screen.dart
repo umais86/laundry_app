@@ -22,7 +22,8 @@ class OrderSummaryScreen extends StatelessWidget {
     final menFragrance = cart.menFragrance;
     final womenFragrance = cart.womenFragrance;
     final packagingPrice = cart.packagingPrice ?? 0.0;
-    final fragrancePrice = cart.fragrancePrice ?? 0.0;
+    final menFragrancePrice = cart.menFragrancePrice ?? 0.0;
+    final womenFragrancePrice = cart.womenFragrancePrice ?? 0.0;
     final steamPrice = cart.steamPrice ?? 0.0;
 
     double itemTotal = cartItems.values.fold(
@@ -30,7 +31,11 @@ class OrderSummaryScreen extends StatelessWidget {
       (total, item) => total + (item.price * item.quantity),
     );
     double totalPrice =
-        itemTotal + packagingPrice + fragrancePrice + steamPrice;
+        itemTotal +
+        packagingPrice +
+        menFragrancePrice +
+        womenFragrancePrice +
+        steamPrice;
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -90,9 +95,18 @@ class OrderSummaryScreen extends StatelessWidget {
               SizedBox(height: 8.h),
 
               if (menFragrance != null)
-                _buildItemRow("Men's Fragrance", menFragrance),
+                _buildItemRow(
+                  "Men's Fragrance",
+                  menFragrance,
+                  cart.menFragrancePrice,
+                ),
               if (womenFragrance != null)
-                _buildItemRow("Women's Fragrance", womenFragrance),
+                _buildItemRow(
+                  "Women's Fragrance",
+                  womenFragrance,
+                  cart.womenFragrancePrice,
+                ),
+
               if (steamSelected)
                 _buildItemRow(
                   "Steam Finish",
@@ -102,11 +116,7 @@ class OrderSummaryScreen extends StatelessWidget {
               if (to.isNotEmpty) _buildItemRow("To", to),
 
               if (cart.selectedFragrance != null)
-                _buildItemRow(
-                  "Fragrance",
-                  '${cart.selectedFragrance!} - QAR ${fragrancePrice.toStringAsFixed(0)}',
-                ),
-
+                _buildItemRow("Fragrance", cart.selectedFragrance!),
               SizedBox(height: 16.h),
               _buildItemRow("Total", "QAR ${totalPrice.toStringAsFixed(0)}"),
 
@@ -174,7 +184,7 @@ class OrderSummaryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildItemRow(String label, String value) {
+  Widget _buildItemRow(String label, String value, [double? price]) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 6.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
@@ -188,13 +198,17 @@ class OrderSummaryScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
+              color: txtColor,
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             child: Text(
-              value,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+              price != null ? " QAR $price" : value,
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13.sp),
             ),
           ),
         ],

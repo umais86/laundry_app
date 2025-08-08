@@ -24,12 +24,12 @@ class CartProvider extends ChangeNotifier {
   String? get from => _from;
   String? get to => _to;
   bool _isSteamSelected = false;
-  final double _steamPrice = 0;
+
   String? selectedFragrance;
   double? fragrancePrice;
 
   bool get isSteamSelected => _isSteamSelected;
-  double get steamPrice => _isSteamSelected ? _steamPrice : 0.0;
+  double get steamPrice => _isSteamSelected ? 6.0 : 0.0;
 
   void toggleSteam(bool value) {
     _isSteamSelected = value;
