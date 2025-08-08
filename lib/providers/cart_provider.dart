@@ -10,14 +10,19 @@ class CartProvider extends ChangeNotifier {
   String? _menFragrance;
   String? _womenFragrance;
 
-  void addItem(String name, String iconPath) {
+  void addItem(String name, String iconPath, double price) {
     if (_cartItems.containsKey(name)) {
       final existingItem = _cartItems[name]!;
       _cartItems[name] = existingItem.copyWith(
         quantity: existingItem.quantity + 1,
       );
     } else {
-      _cartItems[name] = CartItem(name: name, quantity: 1, iconPath: iconPath);
+      _cartItems[name] = CartItem(
+        name: name,
+        quantity: 1,
+        iconPath: iconPath,
+        price: price,
+      );
     }
     notifyListeners();
   }
@@ -45,12 +50,6 @@ class CartProvider extends ChangeNotifier {
 
   String? get packaging => _packaging;
 
-  // void setPerfume(String perfume) {
-  //   _perfume = perfume;
-  //   notifyListeners();
-  // }
-
-  // String? get perfume => _perfume;
   void togglePerfume(bool selected) {
     _perfumeSelected = selected;
     notifyListeners();

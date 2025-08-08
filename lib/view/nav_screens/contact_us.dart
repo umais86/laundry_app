@@ -75,14 +75,15 @@ class _ContactUsState extends State<ContactUs> {
                 Icons.email_outlined,
                 'info@akoyalaundry.com',
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 20.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Send Us Message',
                   style: TextStyle(
-                    fontSize: 18.sp,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
+                    color: txtColor,
                   ),
                 ),
               ),
@@ -112,10 +113,10 @@ class _ContactUsState extends State<ContactUs> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.r),
-                        borderSide: BorderSide(color: txtColor, width: 1.5.w),
+                        borderSide: BorderSide(color: txtColor, width: 1.w),
                       ),
                       border: OutlineInputBorder(
-                        borderSide: BorderSide(width: 0.1.w, color: subColor),
+                        borderSide: BorderSide(width: 0.01.w, color: subColor),
                       ),
                     ),
                   ),
