@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button2.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/widgets/custom_app_bar.dart';
-import 'package:par_1/widgets/men_cloth_list.dart';
-import 'package:par_1/widgets/women_cloth_list.dart';
+import 'package:par_1/view/cloth/men_cloth_list.dart';
+import 'package:par_1/view/cloth/women_cloth_list.dart';
 
 class ClothScreen extends StatefulWidget {
   const ClothScreen({super.key});

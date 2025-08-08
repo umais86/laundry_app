@@ -68,6 +68,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'Plastic Wrap',
               'assets/images/plastic.png',
               'Clean and simple wrap, \ntransparent protection.',
+              0,
               () => _onSelectPackaging('Plastic Wrap'),
               isSelected: _selectedPackaging == 'Plastic Wrap',
             ),
@@ -76,6 +77,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'Luxury Fabric Wrap',
               'assets/images/fabric.png',
               'Hidden, soft-touch \nwrapping with luxurious \ntexture.',
+              15,
               () => _onSelectPackaging('Luxury Fabric Wrap'),
               isSelected: _selectedPackaging == 'Luxury Fabric Wrap',
             ),
@@ -84,6 +86,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'Premium Box',
               'assets/images/premium.png',
               'Elegant gift box with \nmagnetic closure and \nscent-preserving lining.',
+              30,
               () => _onSelectPackaging('Premium Box'),
               isSelected: _selectedPackaging == 'Premium Box',
             ),
@@ -103,6 +106,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
     String title,
     String imgPath,
     String label,
+    double price,
     VoidCallback onTap, {
     required bool isSelected,
   }) {
@@ -112,7 +116,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
         padding: EdgeInsets.all(8.0.w),
         child: Container(
           width: double.infinity,
-          height: 115.h,
+          height: 128.h,
           decoration: BoxDecoration(
             color: isSelected
                 ? const Color(0xFFE29A4F).withValues(alpha: 0.36)
@@ -121,7 +125,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
             boxShadow: [
               BoxShadow(
                 offset: Offset(3, 2),
-                blurRadius: 4,
+                blurRadius: 4.r,
                 color: Colors.grey.shade500,
               ),
             ],
@@ -161,6 +165,15 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(height: 6.h),
+                    Text(
+                      'QAR. ${price.toStringAsFixed(0)}',
+                      style: TextStyle(
+                        color: txtColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
