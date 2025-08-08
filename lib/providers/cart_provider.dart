@@ -28,6 +28,19 @@ class CartProvider extends ChangeNotifier {
   double? fragrancePrice;
   bool get isSteamSelected => _isSteamSelected;
   double get steamPrice => _isSteamSelected ? 6.0 : 0.0;
+  Map<String, double> _selectedServices = {};
+
+  Map<String, double> get selectedServices => _selectedServices;
+
+  void addService(String name, double price) {
+    _selectedServices[name] = price;
+    notifyListeners();
+  }
+
+  void clearServices() {
+    _selectedServices.clear();
+    notifyListeners();
+  }
 
   void toggleSteam(bool value) {
     _isSteamSelected = value;
@@ -172,6 +185,9 @@ class CartProvider extends ChangeNotifier {
     if (_packagingPrice != null) total += _packagingPrice!;
     if (_menFragrancePrice != null) total += _menFragrancePrice!;
     if (_womenFragrancePrice != null) total += _womenFragrancePrice!;
+    for (var servicePrice in _selectedServices.values) {
+      total += servicePrice;
+    }
 
     return total;
   }

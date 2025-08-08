@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/button3.dart';
 import 'package:par_1/utils/colors.dart';
+import 'package:par_1/view/pkg_style_screen.dart';
+import 'package:provider/provider.dart';
 
 class OurServiceCard extends StatelessWidget {
   final String imagePath;
@@ -75,7 +78,21 @@ class OurServiceCard extends StatelessWidget {
                     ),
                     CustomElevatedButton3(
                       label: 'Order',
-                      onPressed: () {},
+                      onPressed: () {
+                        {
+                          final cart = Provider.of<CartProvider>(
+                            context,
+                            listen: false,
+                          );
+
+                          cart.addService(text, price);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => PkgStyleScreen()),
+                          );
+                        }
+                      },
                       isSelected: iscarting,
                     ),
                   ],

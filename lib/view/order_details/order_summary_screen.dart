@@ -17,7 +17,7 @@ class OrderSummaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final cartItems = cart.items;
-    final selectedPackaging = cart.packaging ?? "None";
+    final selectedPackaging = cart.packaging ?? "";
     final steamSelected = cart.isSteamSelected;
     final menFragrance = cart.menFragrance;
     final womenFragrance = cart.womenFragrance;
@@ -25,6 +25,7 @@ class OrderSummaryScreen extends StatelessWidget {
     final menFragrancePrice = cart.menFragrancePrice ?? 0.0;
     final womenFragrancePrice = cart.womenFragrancePrice ?? 0.0;
     final steamPrice = cart.steamPrice ?? 0.0;
+    final selectedServices = cart.selectedServices;
 
     double itemTotal = cartItems.values.fold(
       0.0,
@@ -93,6 +94,12 @@ class OrderSummaryScreen extends StatelessWidget {
                 "QAR ${packagingPrice.toStringAsFixed(0)}",
               ),
               SizedBox(height: 8.h),
+              if (selectedServices.isNotEmpty)
+                for (var entry in selectedServices.entries)
+                  _buildItemRow(
+                    entry.key,
+                    "QAR ${entry.value.toStringAsFixed(0)}",
+                  ),
 
               if (menFragrance != null)
                 _buildItemRow(
