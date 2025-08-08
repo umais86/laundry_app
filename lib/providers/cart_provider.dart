@@ -106,6 +106,36 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setMenFragrance(String name, double price) {
+    _menFragrance = name;
+    _menFragrancePrice = price;
+    notifyListeners();
+  }
+
+  void clearMenFragrance() {
+    _menFragrance = null;
+    _menFragrancePrice = null;
+    notifyListeners();
+  }
+
+  void setWomenFragrance(String name, double price) {
+    _womenFragrance = name;
+    _womenFragrancePrice = price;
+    notifyListeners();
+  }
+
+  void clearWomenFragrance() {
+    _womenFragrance = null;
+    _womenFragrancePrice = null;
+    notifyListeners();
+  }
+
+  List<String> selectedMenFragrances = [];
+  Map<String, double> selectedMenFragrancePrices = {};
+
+  List<String> selectedWomenFragrances = [];
+  Map<String, double> selectedWomenFragrancePrices = {};
+
   double calculateTotalCost() {
     double total = 0;
 

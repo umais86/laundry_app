@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/perfume_card.dart';
+import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class FragranceCard1 extends StatelessWidget {
   const FragranceCard1({super.key});
@@ -31,6 +33,7 @@ class FragranceCard1 extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.h),
+              // Inside Row for Men's Fragrance
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -39,19 +42,46 @@ class FragranceCard1 extends StatelessWidget {
                     text: 'Elixr Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Elixr Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Elixr Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Elixr Akoya', 7);
+                      }
+                    },
                   ),
                   PerfumeCard(
                     imagePath: 'assets/images/imperial.png',
                     text: 'Imperial Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Imperial Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Imperial Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Imperial Akoya', 7);
+                      }
+                    },
                   ),
                 ],
               ),
+
               SizedBox(height: 16.h),
               Text(
                 "Women's Fragrance :",
@@ -62,24 +92,51 @@ class FragranceCard1 extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.h),
+              // Inside Row for Men's Fragrance
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PerfumeCard(
-                    imagePath: 'assets/images/orchid.png',
-                    text: 'Orchid Akoya',
+                    imagePath: 'assets/images/elixr.png',
+                    text: 'Elixr Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Elixr Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Elixr Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Elixr Akoya', 7);
+                      }
+                    },
                   ),
                   PerfumeCard(
-                    imagePath: 'assets/images/moony.png',
-                    text: 'Moony Akoya',
+                    imagePath: 'assets/images/imperial.png',
+                    text: 'Imperial Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting: true,
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Imperial Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Imperial Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Imperial Akoya', 7);
+                      }
+                    },
                   ),
                 ],
               ),

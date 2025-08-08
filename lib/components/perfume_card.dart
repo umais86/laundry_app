@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/button3.dart';
 import 'package:par_1/utils/colors.dart';
-import 'package:provider/provider.dart';
 
 class PerfumeCard extends StatelessWidget {
   final String imagePath;
@@ -11,6 +9,8 @@ class PerfumeCard extends StatelessWidget {
   final String subtext;
   final bool isCarting;
   final double price;
+  final VoidCallback onPressed;
+
   const PerfumeCard({
     super.key,
     required this.imagePath,
@@ -18,6 +18,7 @@ class PerfumeCard extends StatelessWidget {
     required this.subtext,
     required this.isCarting,
     required this.price,
+    required this.onPressed,
   });
 
   @override
@@ -41,7 +42,7 @@ class PerfumeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(16.r),
+            borderRadius: BorderRadius.circular(16.r),
             child: Image.asset(
               imagePath,
               fit: BoxFit.cover,
@@ -84,20 +85,7 @@ class PerfumeCard extends StatelessWidget {
                     ),
                     CustomElevatedButton3(
                       label: 'Add',
-                      onPressed: () {
-                        final cart = Provider.of<CartProvider>(
-                          context,
-                          listen: false,
-                        );
-                        if (isCarting) {
-                          cart.clearFragrance(); // deselect
-                        } else {
-                          cart.setFragrance(
-                            text,
-                            price,
-                          ); // select this fragrance
-                        }
-                      },
+                      onPressed: onPressed,
                       isSelected: isCarting,
                     ),
                   ],

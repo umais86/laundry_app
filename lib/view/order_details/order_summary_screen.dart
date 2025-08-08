@@ -15,12 +15,22 @@ class OrderSummaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
-    final cartItems = cartProvider.cartItems;
-    final selectedPackaging = cartProvider.packaging ?? "None";
-    final steamSelected = cartProvider.isSteamSelected;
-    final menFragrance = cartProvider.menFragrance;
-    final womenFragrance = cartProvider.womenFragrance;
+    final cart = Provider.of<CartProvider>(context);
+    final cartItems = cart.items;
+    final selectedPackaging = cart.packaging ?? "None";
+    final steamSelected = cart.isSteamSelected;
+    final menFragrance = cart.menFragrance;
+    final womenFragrance = cart.womenFragrance;
+    final packagingPrice = cart.packagingPrice ?? 0.0;
+    final fragrancePrice = cart.fragrancePrice ?? 0.0;
+    final steamPrice = cart.steamPrice ?? 0.0;
+
+    double itemTotal = cartItems.values.fold(
+      0.0,
+      (total, item) => total + (item.price * item.quantity),
+    );
+    double totalPrice =
+        itemTotal + packagingPrice + fragrancePrice + steamPrice;
 
     return Scaffold(
       appBar: CustomAppBar(),
@@ -73,15 +83,32 @@ class OrderSummaryScreen extends StatelessWidget {
                   .map((item) => _buildCartItemRow(item)),
 
               SizedBox(height: 20.h),
-              _buildItemRow("Packaging", selectedPackaging),
+              _buildItemRow(
+                "Packaging",
+                "QAR ${packagingPrice.toStringAsFixed(0)}",
+              ),
+              SizedBox(height: 8.h),
 
               if (menFragrance != null)
                 _buildItemRow("Men's Fragrance", menFragrance),
               if (womenFragrance != null)
                 _buildItemRow("Women's Fragrance", womenFragrance),
-              if (steamSelected) _buildItemRow("Steam Finish", "ON"),
+              if (steamSelected)
+                _buildItemRow(
+                  "Steam Finish",
+                  "QAR ${steamPrice.toStringAsFixed(0)}",
+                ),
               if (from.isNotEmpty) _buildItemRow("From", from),
               if (to.isNotEmpty) _buildItemRow("To", to),
+
+              if (cart.selectedFragrance != null)
+                _buildItemRow(
+                  "Fragrance",
+                  '${cart.selectedFragrance!} - QAR ${fragrancePrice.toStringAsFixed(0)}',
+                ),
+
+              SizedBox(height: 16.h),
+              _buildItemRow("Total", "QAR ${totalPrice.toStringAsFixed(0)}"),
 
               SizedBox(height: 30.h),
               CustomElevatedButton(

@@ -18,7 +18,7 @@ class Counter1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-    final currentCount = cart.cartItems[clothLabel]?.quantity ?? 0;
+    final currentCount = cart.items[clothLabel]?.quantity ?? 0;
 
     return Row(
       children: [

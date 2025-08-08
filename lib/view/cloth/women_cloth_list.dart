@@ -31,7 +31,7 @@ class WomenClothList extends StatelessWidget {
                 child: _buildContainer(
                   cloth["icon"],
                   cloth["label"],
-                  cloth["price"],
+                  (cloth["price"] as num).toDouble(),
                 ),
               );
             },

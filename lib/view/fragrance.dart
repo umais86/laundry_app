@@ -57,6 +57,7 @@ class _FragranceState extends State<Fragrance> {
                 ),
               ),
               SizedBox(height: 10.h),
+              // Inside Row for Men's Fragrance
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,24 +66,46 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Elixr Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting:
-                        Provider.of<CartProvider>(context).selectedFragrance ==
-                        'Elixr Akoya',
-
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Elixr Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Elixr Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Elixr Akoya', 7);
+                      }
+                    },
                   ),
                   PerfumeCard(
                     imagePath: 'assets/images/imperial.png',
                     text: 'Imperial Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting:
-                        Provider.of<CartProvider>(context).selectedFragrance ==
-                        'Imperial Akoya',
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).menFragrance ==
+                        'Imperial Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.menFragrance == 'Imperial Akoya') {
+                        cart.clearMenFragrance();
+                      } else {
+                        cart.setMenFragrance('Imperial Akoya', 7);
+                      }
+                    },
                   ),
                 ],
               ),
+
               SizedBox(height: 16.h),
               Text(
                 "Women's Fragrance :",
@@ -101,23 +124,46 @@ class _FragranceState extends State<Fragrance> {
                     text: 'Orchid Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting:
-                        Provider.of<CartProvider>(context).selectedFragrance ==
-                        'Orchid Akoya',
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).womenFragrance ==
+                        'Orchid Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.womenFragrance == 'Orchid Akoya') {
+                        cart.clearWomenFragrance();
+                      } else {
+                        cart.setWomenFragrance('Orchid Akoya', 7);
+                      }
+                    },
                   ),
                   PerfumeCard(
                     imagePath: 'assets/images/moony.png',
                     text: 'Moony Akoya',
                     subtext:
                         'Elegant floral notes to enhance freshness in every fabric',
-                    isCarting:
-                        Provider.of<CartProvider>(context).selectedFragrance ==
-                        'Moony Akoya',
                     price: 7,
+                    isCarting:
+                        Provider.of<CartProvider>(context).womenFragrance ==
+                        'Moony Akoya',
+                    onPressed: () {
+                      final cart = Provider.of<CartProvider>(
+                        context,
+                        listen: false,
+                      );
+                      if (cart.womenFragrance == 'Moony Akoya') {
+                        cart.clearWomenFragrance();
+                      } else {
+                        cart.setWomenFragrance('Moony Akoya', 7);
+                      }
+                    },
                   ),
                 ],
               ),
+
               SizedBox(height: 16.h),
               CustomElevatedButton(
                 label: "Confirm & Continue",

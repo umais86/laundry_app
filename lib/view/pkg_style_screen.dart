@@ -17,11 +17,14 @@ class PkgStyleScreen extends StatefulWidget {
 class _PkgStyleScreenState extends State<PkgStyleScreen> {
   String? _selectedPackaging;
 
-  void _onSelectPackaging(String packaging) {
+  void _onSelectPackaging(String packaging, double price) {
     setState(() {
       _selectedPackaging = packaging;
     });
-    Provider.of<CartProvider>(context, listen: false).setPackaging(packaging);
+    Provider.of<CartProvider>(
+      context,
+      listen: false,
+    ).setPackaging(packaging, price);
   }
 
   void _onConfirm() {
@@ -69,7 +72,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'assets/images/plastic.png',
               'Clean and simple wrap, \ntransparent protection.',
               0,
-              () => _onSelectPackaging('Plastic Wrap'),
+              () => _onSelectPackaging('Plastic Wrap', 0),
               isSelected: _selectedPackaging == 'Plastic Wrap',
             ),
             SizedBox(height: 16.h),
@@ -78,7 +81,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'assets/images/fabric.png',
               'Hidden, soft-touch \nwrapping with luxurious \ntexture.',
               15,
-              () => _onSelectPackaging('Luxury Fabric Wrap'),
+              () => _onSelectPackaging('Luxury Fabric Wrap', 15),
               isSelected: _selectedPackaging == 'Luxury Fabric Wrap',
             ),
             SizedBox(height: 16.h),
@@ -87,7 +90,7 @@ class _PkgStyleScreenState extends State<PkgStyleScreen> {
               'assets/images/premium.png',
               'Elegant gift box with \nmagnetic closure and \nscent-preserving lining.',
               30,
-              () => _onSelectPackaging('Premium Box'),
+              () => _onSelectPackaging('Premium Box', 30),
               isSelected: _selectedPackaging == 'Premium Box',
             ),
 
