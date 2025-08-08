@@ -62,15 +62,6 @@ class _ContactUsState extends State<ContactUs> {
                 style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 16.h),
-              // CircleAvatar(
-              //   backgroundColor: Colors.amber.shade50,
-              //   radius: 30,
-              //   child: Icon(
-              //     Icons.location_on_outlined,
-              //     size: 28,
-              //     color: txtColor,
-              //   ),
-              // ),
               _contactCard(
                 'Location',
                 Icons.location_on_outlined,

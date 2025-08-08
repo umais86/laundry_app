@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/components/card2.dart';
-import 'package:par_1/components/card3.dart';
 import 'package:par_1/components/card4.dart';
-import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/utils/colors.dart';
-import 'package:par_1/view/cloth_screen.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/view/fragrance.dart';
 import 'package:par_1/widgets/custom_app_bar1.dart';
-import 'package:par_1/widgets/fragrance_card.dart';
-import 'package:provider/provider.dart';
 
 class WashTypeScreen extends StatefulWidget {
   const WashTypeScreen({super.key});
