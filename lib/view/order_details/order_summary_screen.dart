@@ -161,26 +161,15 @@ class OrderSummaryScreen extends StatelessWidget {
               style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
           ),
-
-          // Price display
-          if (item.price != null && item.price > 0)
-            Padding(
-              padding: EdgeInsets.only(right: 10.w),
-              child: Text(
-                "QAR ${(item.price * item.quantity).toStringAsFixed(2)}",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13.sp,
-                  color: txtColor,
-                ),
-              ),
-            ),
-
-          // Quantity box
+          Text(
+            "QAR ${(item.price * item.quantity).toStringAsFixed(2)}",
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13.sp),
+          ),
+          SizedBox(width: 8.w),
           Container(
             height: 28.h,
             width: 26.w,
-            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
               color: txtColor,
               borderRadius: BorderRadius.circular(8.r),

@@ -51,6 +51,7 @@ class CartProvider extends ChangeNotifier {
     if (_items.containsKey(name)) {
       _items[name] = _items[name]!.copyWith(
         quantity: _items[name]!.quantity + 1,
+        price: _items[name]!.price, // preserve existing price
       );
     } else {
       _items[name] = CartItem(
@@ -68,6 +69,7 @@ class CartProvider extends ChangeNotifier {
       if (_items[name]!.quantity > 1) {
         _items[name] = _items[name]!.copyWith(
           quantity: _items[name]!.quantity - 1,
+          price: _items[name]!.price,
         );
       } else {
         _items.remove(name);
@@ -185,6 +187,8 @@ class CartProvider extends ChangeNotifier {
     if (_packagingPrice != null) total += _packagingPrice!;
     if (_menFragrancePrice != null) total += _menFragrancePrice!;
     if (_womenFragrancePrice != null) total += _womenFragrancePrice!;
+    if (fragrancePrice != null) total += fragrancePrice!;
+    if (_isSteamSelected) total += 6.0;
     for (var servicePrice in _selectedServices.values) {
       total += servicePrice;
     }
