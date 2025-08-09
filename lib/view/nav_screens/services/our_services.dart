@@ -172,7 +172,7 @@ class _OurServicesState extends State<OurServices> {
                   Expanded(child: Divider(thickness: 1.5, color: txtColor)),
                   Text(
                     'LUXURY GARMENT CARE',
-                    style: TextStyle(fontSize: 14.sp),
+                    style: TextStyle(fontSize: 12.sp),
                   ),
                   Expanded(child: Divider(thickness: 1.5, color: txtColor)),
                 ],
