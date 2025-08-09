@@ -17,13 +17,10 @@ class OrderSummaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final cartItems = cart.items;
-    final selectedPackaging = cart.packaging ?? "";
     final steamSelected = cart.isSteamSelected;
     final menFragrance = cart.menFragrance;
     final womenFragrance = cart.womenFragrance;
     final packagingPrice = cart.packagingPrice ?? 0.0;
-    final menFragrancePrice = cart.menFragrancePrice ?? 0.0;
-    final womenFragrancePrice = cart.womenFragrancePrice ?? 0.0;
     final steamPrice = cart.steamPrice ?? 0.0;
     final selectedServices = cart.selectedServices;
 
@@ -31,12 +28,7 @@ class OrderSummaryScreen extends StatelessWidget {
       0.0,
       (total, item) => total + (item.price * item.quantity),
     );
-    double totalPrice =
-        itemTotal +
-        packagingPrice +
-        menFragrancePrice +
-        womenFragrancePrice +
-        steamPrice;
+    double totalPrice = cart.calculateTotalCost();
 
     return Scaffold(
       appBar: CustomAppBar(),
