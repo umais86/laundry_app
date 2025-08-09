@@ -28,7 +28,7 @@ class CartProvider extends ChangeNotifier {
   double? fragrancePrice;
   bool get isSteamSelected => _isSteamSelected;
   double get steamPrice => _isSteamSelected ? 6.0 : 0.0;
-  Map<String, double> _selectedServices = {};
+  final Map<String, double> _selectedServices = {};
 
   Map<String, double> get selectedServices => _selectedServices;
 

@@ -38,7 +38,7 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     'Get In Touch',
                     style: TextStyle(
-                      fontSize: 1.sp,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
