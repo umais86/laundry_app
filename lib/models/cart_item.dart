@@ -11,7 +11,7 @@ class CartItem {
     required this.price,
   });
 
-  CartItem copyWith({int? quantity}) {
+  CartItem copyWith({int? quantity, required double price}) {
     return CartItem(
       name: name,
       iconPath: iconPath,

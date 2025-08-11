@@ -9,11 +9,11 @@ class WomenClothList extends StatelessWidget {
   const WomenClothList({super.key});
 
   final List<Map<String, dynamic>> womenClothes = const [
-    {"icon": "assets/icons/abaya.png", "label": "Abaya", "price": 0},
-    {"icon": "assets/icons/hijab.png", "label": "Hijab", "price": 0},
-    {"icon": "assets/icons/kaftan.png", "label": "Kaftan", "price": 0},
-    {"icon": "assets/icons/skirt.png", "label": "Skirt", "price": 0},
-    {"icon": "assets/icons/trouser.png", "label": "Trouser", "price": 0},
+    {"icon": "assets/icons/abaya.png", "label": "Abaya", "price": 12},
+    {"icon": "assets/icons/hijab.png", "label": "Hijab", "price": 8},
+    {"icon": "assets/icons/kaftan.png", "label": "Kaftan", "price": 20},
+    {"icon": "assets/icons/skirt.png", "label": "Skirt", "price": 10},
+    {"icon": "assets/icons/trouser.png", "label": "Trouser", "price": 6},
   ];
 
   @override
