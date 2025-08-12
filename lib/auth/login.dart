@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/auth/forgot_pass.dart';
 import 'package:par_1/auth/sign_up.dart';
@@ -17,7 +19,72 @@ class _LoginState extends State<Login> {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passcontroller = TextEditingController();
 
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
+
+  bool _emailFocused = false;
+  bool _passwordFocused = false;
+
   bool _agreedToTerms = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _emailFocusNode.addListener(() {
+      setState(() => _emailFocused = _emailFocusNode.hasFocus);
+    });
+
+    _passwordFocusNode.addListener(() {
+      setState(() => _passwordFocused = _passwordFocusNode.hasFocus);
+    });
+  }
+
+  Future<void> _signIn() async {
+    if (emailcontroller.text.trim().isEmpty ||
+        passcontroller.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Please fill in both email and password."),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroller.text.trim(),
+        password: passcontroller.text.trim(),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => NavBar()),
+      );
+    } on FirebaseAuthException catch (e) {
+      String errorMessage;
+
+      if (e.code == 'user-not-found') {
+        errorMessage = 'No user found for this email.';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Incorrect password.';
+      } else {
+        errorMessage = 'Login failed. Please try again.';
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred. Please try again.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +131,22 @@ class _LoginState extends State<Login> {
                       SizedBox(height: 100.h),
                       _buildLabel('Email Address'),
                       SizedBox(height: 12.h),
-                      _buildInputField(emailcontroller, 'johndoe@gmail.com'),
+                      _buildInputField(
+                        emailcontroller,
+                        'johndoe@gmail.com',
+                        _emailFocusNode,
+                        _emailFocused,
+                        Icons.email_outlined,
+                      ),
                       SizedBox(height: 12.h),
                       _buildLabel('Password'),
                       SizedBox(height: 16.h),
-                      _buildPassword(passcontroller, ''),
+                      _buildPassword(
+                        passcontroller,
+                        'Enter your password',
+                        _passwordFocusNode,
+                        _passwordFocused,
+                      ),
                     ],
                   ),
                 ),
@@ -109,12 +187,7 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: CustomElevatedButton(
                     label: 'Sign In',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => NavBar()),
-                      );
-                    },
+                    onPressed: _signIn,
                   ),
                 ),
                 SizedBox(height: 24),
@@ -163,13 +236,23 @@ class _LoginState extends State<Login> {
     text,
     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
   );
-  Widget _buildInputField(TextEditingController controller, String hint) {
+
+  Widget _buildInputField(
+    TextEditingController controller,
+    String hint,
+    FocusNode focusNode,
+    bool isFocused,
+    IconData icon,
+  ) {
     return TextField(
-      controller: emailcontroller,
+      controller: controller,
+      focusNode: focusNode,
+      keyboardType: TextInputType.emailAddress,
+      inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.email_outlined),
+        prefixIcon: Icon(icon, color: subColor),
         hintText: hint,
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
+        fillColor: Colors.grey.shade200,
         filled: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
@@ -180,13 +263,21 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _buildPassword(TextEditingController controller, String hint) {
+  Widget _buildPassword(
+    TextEditingController controller,
+    String hint,
+    FocusNode focusNode,
+    bool isFocused,
+  ) {
     return TextField(
+      controller: controller,
+      focusNode: focusNode,
       obscureText: true,
+      inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.lock_outline_sharp),
+        prefixIcon: Icon(Icons.lock_outline_sharp, color: subColor),
         hintText: hint,
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
+        fillColor: Colors.grey.shade200,
         filled: true,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(

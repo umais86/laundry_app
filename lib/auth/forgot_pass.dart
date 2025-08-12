@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:par_1/auth/login.dart';
 import 'package:par_1/auth/otp/otp_screen.dart';
 import 'package:par_1/utils/button.dart';
@@ -13,7 +14,44 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  final TextEditingController emailcontrolller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool isLoading = false;
+
+  void _sendResetLink() async {
+    if (emailcontroller.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter your email'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    setState(() => isLoading = true);
+
+    try {
+      await _auth.sendPasswordResetEmail(email: emailcontroller.text.trim());
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Reset link sent to your email'),
+          backgroundColor: Colors.green,
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const OtpScreen()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+      );
+    }
+
+    setState(() => isLoading = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +73,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                     SizedBox(height: 20.h),
                     Text(
-                      'Reset Your Passweord',
+                      'Reset Your Password',
                       style: TextStyle(fontSize: 16.sp, color: Colors.white),
                     ),
                   ],
@@ -53,7 +91,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   backgroundColor: Colors.amber.shade50,
                   child: Icon(Icons.lock_outline, size: 35, color: txtColor),
                 ),
-
                 SizedBox(height: 16.h),
                 Text(
                   'Forgot Password?',
@@ -69,22 +106,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildLabel('Email Address'),
                 SizedBox(height: 8.h),
-                _buildInputField(emailcontrolller, 'your@mail.com'),
+                _buildInputField(emailcontroller, 'your@mail.com'),
                 SizedBox(height: 26.h),
                 CustomElevatedButton(
-                  label: 'Send Reset Code',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => OtpScreen()),
-                    );
-                  },
+                  label: isLoading ? 'Sending...' : 'Send Reset Code',
+                  onPressed: isLoading ? () {} : _sendResetLink,
                 ),
                 SizedBox(height: 26.h),
                 Row(
@@ -106,7 +138,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => Login()),
+                      MaterialPageRoute(builder: (_) => const Login()),
                     );
                   },
                   child: Center(
@@ -132,9 +164,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     text,
     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
   );
+
   Widget _buildInputField(TextEditingController controller, String hint) {
     return TextField(
-      controller: emailcontrolller,
+      controller: controller,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.email_outlined),
         hintText: hint,

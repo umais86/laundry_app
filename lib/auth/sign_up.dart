@@ -55,7 +55,6 @@ class _SignUpState extends State<SignUp> {
       return;
     }
 
-    // Firebase signup
     try {
       setState(() => _isLoading = true);
 
@@ -64,7 +63,6 @@ class _SignUpState extends State<SignUp> {
         password: password,
       );
 
-      // Optionally update display name
       await _auth.currentUser?.updateDisplayName(name);
 
       Navigator.pushReplacement(
@@ -225,7 +223,7 @@ class _SignUpState extends State<SignUp> {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
+        fillColor: Colors.grey.shade200,
         filled: true,
         hintText: hint,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
@@ -242,7 +240,7 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       obscureText: _obscurePassword,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
+        fillColor: Colors.grey.shade200,
         filled: true,
         suffixIcon: IconButton(
           icon: Icon(
@@ -265,7 +263,7 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       obscureText: true,
       decoration: InputDecoration(
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
+        fillColor: Colors.grey.shade200,
         filled: true,
         hintText: '. . . . . . . . . . ',
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
