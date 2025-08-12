@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/auth/login.dart';
+import 'package:par_1/auth/otp_screen.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 
@@ -78,7 +79,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 SizedBox(height: 26.h),
                 CustomElevatedButton(
                   label: 'Send Reset Code',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => OtpScreen()),
+                    );
+                  },
                 ),
                 SizedBox(height: 26.h),
                 Row(

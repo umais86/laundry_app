@@ -6,7 +6,6 @@ import 'package:par_1/auth/sign_up.dart';
 import 'package:par_1/providers/cart_provider.dart';
 import 'package:par_1/view/splash_screen.dart';
 import 'package:par_1/view/welcome.dart';
-import 'package:par_1/view/nav_screens/nav_bar.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
