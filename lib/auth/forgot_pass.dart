@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/auth/login.dart';
-import 'package:par_1/auth/otp_screen.dart';
+import 'package:par_1/auth/otp/otp_screen.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 
