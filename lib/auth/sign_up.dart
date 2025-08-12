@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:par_1/auth/login.dart';
+import 'package:par_1/auth/txt_field/input_field.dart';
+import 'package:par_1/auth/txt_field/label.dart';
+import 'package:par_1/auth/txt_field/pass_field.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button.dart';
@@ -19,6 +22,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController cpasswordcontroller = TextEditingController();
 
   bool _obscurePassword = true;
+  final FocusNode _passwordFocusNode = FocusNode();
   bool _agreedToTerms = true;
   bool _isLoading = false;
 
@@ -118,16 +122,25 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   SizedBox(height: 34.h),
-                  _buildLabel('Name'),
+                  CustomLabel(text: 'Name'),
                   _buildInputField(nameController, 'John Doe'),
                   SizedBox(height: 16.h),
-                  _buildLabel('Email'),
-                  _buildInputField(emailcontroller, 'Johndoe@gmail.com'),
+                  CustomLabel(text: 'Email'),
+                  CustomInputField(
+                    controller: emailcontroller,
+                    hint: 'Johndoe@gmail.com',
+                    icon: Icons.email_outlined,
+                  ),
                   SizedBox(height: 16.h),
-                  _buildLabel('Password'),
-                  _buildPasswordField(passwordcontroller),
+                  CustomLabel(text: 'Password'),
+                  CustomPasswordField(
+                    controller: passwordcontroller,
+                    hint: 'Enter Your Password',
+                    focusNode: _passwordFocusNode,
+                    unfocusedColor: subColor,
+                  ),
                   SizedBox(height: 16.h),
-                  _buildLabel('Confirm Password'),
+                  CustomLabel(text: 'Confirm Password'),
                   _buildcPasswordField(cpasswordcontroller),
                   SizedBox(height: 16.h),
                   Row(
@@ -214,11 +227,6 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _buildLabel(String text) => Text(
-    text,
-    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
-  );
-
   Widget _buildInputField(TextEditingController controller, String hint) {
     return TextField(
       controller: controller,
@@ -226,30 +234,6 @@ class _SignUpState extends State<SignUp> {
         fillColor: Colors.grey.shade200,
         filled: true,
         hintText: hint,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide.none,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPasswordField(TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      obscureText: _obscurePassword,
-      decoration: InputDecoration(
-        fillColor: Colors.grey.shade200,
-        hintText: 'Enter Your Password',
-        filled: true,
-        suffixIcon: IconButton(
-          icon: Icon(
-            _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Colors.black45,
-          ),
-          onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
-        ),
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),

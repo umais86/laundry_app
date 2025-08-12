@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/auth/forgot_pass.dart';
 import 'package:par_1/auth/sign_up.dart';
+import 'package:par_1/auth/txt_field/label.dart';
+import 'package:par_1/auth/txt_field/pass_field.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:par_1/view/nav_screens/nav_bar.dart';
@@ -129,7 +131,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 100.h),
-                      _buildLabel('Email Address'),
+                      CustomLabel(text: 'Email Address'),
                       SizedBox(height: 12.h),
                       _buildInputField(
                         emailcontroller,
@@ -139,13 +141,13 @@ class _LoginState extends State<Login> {
                         Icons.email_outlined,
                       ),
                       SizedBox(height: 12.h),
-                      _buildLabel('Password'),
+                      CustomLabel(text: 'Password'),
                       SizedBox(height: 16.h),
-                      _buildPassword(
-                        passcontroller,
-                        'Enter your password',
-                        _passwordFocusNode,
-                        _passwordFocused,
+                      CustomPasswordField(
+                        controller: passcontroller,
+                        hint: 'Enter your password',
+                        focusNode: _passwordFocusNode,
+                        unfocusedColor: subColor,
                       ),
                     ],
                   ),
@@ -232,11 +234,6 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget _buildLabel(String text) => Text(
-    text,
-    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
-  );
-
   Widget _buildInputField(
     TextEditingController controller,
     String hint,
@@ -251,31 +248,6 @@ class _LoginState extends State<Login> {
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: subColor),
-        hintText: hint,
-        fillColor: Colors.grey.shade200,
-        filled: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide.none,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPassword(
-    TextEditingController controller,
-    String hint,
-    FocusNode focusNode,
-    bool isFocused,
-  ) {
-    return TextField(
-      controller: controller,
-      focusNode: focusNode,
-      obscureText: true,
-      inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r"\s"))],
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.lock_outline_sharp, color: subColor),
         hintText: hint,
         fillColor: Colors.grey.shade200,
         filled: true,

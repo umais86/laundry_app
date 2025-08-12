@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:par_1/auth/login.dart';
 import 'package:par_1/auth/otp/otp_screen.dart';
+import 'package:par_1/auth/txt_field/input_field.dart';
+import 'package:par_1/auth/txt_field/label.dart';
 import 'package:par_1/utils/button.dart';
 import 'package:par_1/utils/colors.dart';
 
@@ -110,9 +112,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildLabel('Email Address'),
+                CustomLabel(text: 'Email Address'),
                 SizedBox(height: 8.h),
-                _buildInputField(emailcontroller, 'your@mail.com'),
+                CustomInputField(
+                  controller: emailcontroller,
+                  hint: 'Johndoe@gmail.com',
+                  icon: Icons.email_outlined,
+                ),
                 SizedBox(height: 26.h),
                 CustomElevatedButton(
                   label: isLoading ? 'Sending...' : 'Send Reset Code',
@@ -156,28 +162,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildLabel(String text) => Text(
-    text,
-    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.sp),
-  );
-
-  Widget _buildInputField(TextEditingController controller, String hint) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.email_outlined),
-        hintText: hint,
-        fillColor: const Color.fromARGB(255, 215, 236, 245),
-        filled: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide.none,
-        ),
       ),
     );
   }
