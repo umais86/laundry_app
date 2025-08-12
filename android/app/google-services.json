@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "478875212580",
+    "project_id": "akoya-laundry-app",
+    "storage_bucket": "akoya-laundry-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478875212580:android:01f3164478d22ed193f1b1",
+        "android_client_info": {
+          "package_name": "com.example.par_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBmA7-wyn2jrmLEBKGeu5JyaF4AIsTcec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
