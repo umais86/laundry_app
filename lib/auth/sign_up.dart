@@ -241,6 +241,7 @@ class _SignUpState extends State<SignUp> {
       obscureText: _obscurePassword,
       decoration: InputDecoration(
         fillColor: Colors.grey.shade200,
+        hintText: 'Enter Your Password',
         filled: true,
         suffixIcon: IconButton(
           icon: Icon(
@@ -265,7 +266,7 @@ class _SignUpState extends State<SignUp> {
       decoration: InputDecoration(
         fillColor: Colors.grey.shade200,
         filled: true,
-        hintText: '. . . . . . . . . . ',
+        hintText: '••••••••',
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
