@@ -22,14 +22,11 @@ class CustomPasswordField extends StatefulWidget {
 
 class _CustomPasswordFieldState extends State<CustomPasswordField> {
   bool _obscureText = true;
-  bool _isFocused = false;
 
   @override
   void initState() {
     super.initState();
-    widget.focusNode.addListener(() {
-      setState(() => _isFocused = widget.focusNode.hasFocus);
-    });
+    widget.focusNode.addListener(() {});
   }
 
   @override

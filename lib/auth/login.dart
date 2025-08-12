@@ -12,7 +12,6 @@ import 'package:par_1/view/nav_screens/nav_bar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
-
   @override
   State<Login> createState() => _LoginState();
 }
@@ -26,7 +25,6 @@ class _LoginState extends State<Login> {
 
   bool _emailFocused = false;
   bool _passwordFocused = false;
-
   bool _agreedToTerms = true;
 
   @override
@@ -53,6 +51,7 @@ class _LoginState extends State<Login> {
       );
       return;
     }
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailcontroller.text.trim(),
@@ -70,6 +69,8 @@ class _LoginState extends State<Login> {
         errorMessage = 'No user found for this email.';
       } else if (e.code == 'wrong-password') {
         errorMessage = 'Incorrect password.';
+      } else if (e.code == 'invalid-email') {
+        errorMessage = 'Invalid email format.';
       } else {
         errorMessage = 'Login failed. Please try again.';
       }

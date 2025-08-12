@@ -21,7 +21,6 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController passwordcontroller = TextEditingController();
   final TextEditingController cpasswordcontroller = TextEditingController();
 
-  bool _obscurePassword = true;
   final FocusNode _passwordFocusNode = FocusNode();
   bool _agreedToTerms = true;
   bool _isLoading = false;
