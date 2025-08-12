@@ -99,7 +99,10 @@ class _SignUpState extends State<SignUp> {
                   CustomElevatedButton(
                     label: 'Sign Up',
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/main');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => Login()),
+                      );
                     },
                   ),
                   SizedBox(height: 24.h),

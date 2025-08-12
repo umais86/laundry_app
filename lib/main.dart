@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:par_1/auth/sign_up.dart';
 import 'package:par_1/providers/cart_provider.dart';
+import 'package:par_1/view/splash_screen.dart';
 import 'package:par_1/view/welcome.dart';
 import 'package:par_1/view/nav_screens/nav_bar.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  await Firebase.initializeApp();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -32,9 +33,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
             routes: {
-              '/': (context) => const WelcomeScreen(),
+              '/': (context) => const SplashScreen(),
+              '/welcome': (context) => const WelcomeScreen(),
               '/signup': (context) => const SignUp(),
-              '/main': (context) => const NavBar(),
             },
           );
         },
