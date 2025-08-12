@@ -3,6 +3,7 @@ import 'package:par_1/auth/login.dart';
 import 'package:par_1/utils/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:par_1/utils/button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -19,6 +20,69 @@ class _SignUpState extends State<SignUp> {
 
   bool _obscurePassword = true;
   bool _agreedToTerms = true;
+  bool _isLoading = false;
+
+  final _auth = FirebaseAuth.instance;
+
+  void _signUp() async {
+    String name = nameController.text.trim();
+    String email = emailcontroller.text.trim();
+    String password = passwordcontroller.text.trim();
+    String cpassword = cpasswordcontroller.text.trim();
+
+    // Input validation
+    if (name.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        cpassword.isEmpty) {
+      _showError("Please fill all fields.");
+      return;
+    }
+    if (!email.contains("@")) {
+      _showError("Please enter a valid email.");
+      return;
+    }
+    if (password.length < 6) {
+      _showError("Password must be at least 6 characters.");
+      return;
+    }
+    if (password != cpassword) {
+      _showError("Passwords do not match.");
+      return;
+    }
+    if (!_agreedToTerms) {
+      _showError("You must agree to the terms & conditions.");
+      return;
+    }
+
+    // Firebase signup
+    try {
+      setState(() => _isLoading = true);
+
+      await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Optionally update display name
+      await _auth.currentUser?.updateDisplayName(name);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const Login()),
+      );
+    } on FirebaseAuthException catch (e) {
+      _showError(e.message ?? "Signup failed.");
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +98,11 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'Create Account',
                           style: TextStyle(
-                            color: Color(0xFFD4Af37),
+                            color: const Color(0xFFD4Af37),
                             fontSize: 24.sp,
                             fontWeight: FontWeight.w700,
                           ),
@@ -56,10 +119,9 @@ class _SignUpState extends State<SignUp> {
                       ],
                     ),
                   ),
-
                   SizedBox(height: 34.h),
                   _buildLabel('Name'),
-                  _buildInputField(nameController, 'John doe'),
+                  _buildInputField(nameController, 'John Doe'),
                   SizedBox(height: 16.h),
                   _buildLabel('Email'),
                   _buildInputField(emailcontroller, 'Johndoe@gmail.com'),
@@ -88,7 +150,7 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           'terms & conditions',
                           style: TextStyle(
-                            color: Color(0xFFB48B25),
+                            color: const Color(0xFFB48B25),
                             fontSize: 13.sp,
                           ),
                         ),
@@ -96,15 +158,12 @@ class _SignUpState extends State<SignUp> {
                     ],
                   ),
                   SizedBox(height: 16.h),
-                  CustomElevatedButton(
-                    label: 'Sign Up',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => Login()),
-                      );
-                    },
-                  ),
+                  _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : CustomElevatedButton(
+                          label: 'Sign Up',
+                          onPressed: _signUp,
+                        ),
                   SizedBox(height: 24.h),
                   Row(
                     children: [
@@ -134,13 +193,13 @@ class _SignUpState extends State<SignUp> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => Login()),
+                            MaterialPageRoute(builder: (_) => const Login()),
                           );
                         },
                         child: Text(
                           'Sign In',
                           style: TextStyle(
-                            color: Color(0xFFB48B25),
+                            color: const Color(0xFFB48B25),
                             fontWeight: FontWeight.bold,
                             fontSize: 13.sp,
                           ),
